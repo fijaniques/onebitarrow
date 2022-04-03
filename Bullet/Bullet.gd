@@ -49,5 +49,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _reset():
 	get_tree().current_scene.shooting = false
-	get_tree().current_scene.get_node("Character").shooting = false
+	get_tree().current_scene.get_node("Character").canShoot = true
 	queue_free()

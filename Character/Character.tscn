@@ -8,8 +8,9 @@
 [ext_resource path="res://Sounds/jump.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/step.ogg" type="AudioStream" id=9]
 
-[sub_resource type="RectangleShape2D" id=39]
-extents = Vector2( 5, 8 )
+[sub_resource type="CapsuleShape2D" id=48]
+radius = 4.0
+height = 7.0
 
 [sub_resource type="Animation" id=44]
 resource_name = "Dead"
@@ -200,7 +201,8 @@ hframes = 4
 vframes = 4
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource( 39 )
+position = Vector2( 0, 0.5 )
+shape = SubResource( 48 )
 
 [node name="Gun" type="Position2D" parent="."]
 position = Vector2( 10, 0 )

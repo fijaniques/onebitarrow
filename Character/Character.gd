@@ -18,8 +18,9 @@ var dead: bool = false
 #SHOOT
 var bullet = preload("res://Bullet/Bullet.tscn")
 var shooting: bool = false
-export var shootAnim: bool = false
 var dShot = Vector2.ZERO
+var canShoot: bool = true
+export var shootAnim: bool = false
 signal the_bullet 
 signal teleport
 
@@ -42,7 +43,7 @@ func _get_input():
 			hDir = -1
 		
 		if Input.is_action_just_pressed("space"):
-			if !shooting:
+			if !shooting and canShoot:
 				_shoot()
 			else:
 				_teleport()
@@ -66,6 +67,7 @@ func _shoot():
 	$Audio/Shoot.play()
 	shooting = true
 	shootAnim = true
+	canShoot = false
 	if Input.is_action_pressed("up"):
 		dShot = Vector2(0, -1)
 		animation.play("ShootUp")
@@ -85,6 +87,7 @@ func _teleport():
 	$Audio/Teleport.play()
 	emit_signal("teleport")
 	shooting = false
+	canShoot = true
 	_jump()
 
 

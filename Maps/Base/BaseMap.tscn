@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Sprite/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/traps.png" type="Texture" id=2]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Base/BaseMap.gd" type="Script" id=4]
 [ext_resource path="res://Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Collectible/Collectible.tscn" type="PackedScene" id=6]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -302,3 +303,5 @@ position = Vector2( 120, 128 )
 
 [node name="Door" parent="." instance=ExtResource( 5 )]
 position = Vector2( 136, 128 )
+
+[node name="Collectible" parent="." instance=ExtResource( 6 )]

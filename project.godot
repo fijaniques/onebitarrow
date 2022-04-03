@@ -82,6 +82,7 @@ up={
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="projectile"
 2d_physics/layer_6="door"
+2d_physics/layer_7="collectible"
 
 [physics]
 
