@@ -1,7 +1,7 @@
 extends Area2D
 
 func _on_Door_body_entered(body):
-	get_tree().current_scene.get_node("Character").visible = false
+	get_tree().current_scene.get_node("Colorizer").get_node("Character").visible = false
 	_change_scene()
 
 

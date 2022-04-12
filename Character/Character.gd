@@ -12,7 +12,7 @@ var canMove: bool = true
 
 #ANIMATION
 onready var animation = $AnimationPlayer
-var flipped: bool = false
+export var flipped: bool = false
 var dead: bool = false
 
 #SHOOT
@@ -45,7 +45,7 @@ func _get_input():
 		if Input.is_action_just_pressed("space"):
 			if !shooting and canShoot:
 				_shoot()
-			else:
+			elif shooting and !canShoot:
 				_teleport()
 		
 		if Input.is_action_just_pressed("w") and is_on_floor():
@@ -129,3 +129,8 @@ func _animation():
 					animation.play("Idle")
 			else:
 				animation.play("Jump")
+			
+			if Input.is_action_pressed("up"):
+				animation.play("ShootUp")
+			elif Input.is_action_pressed("s"):
+				animation.play("ShootDown")

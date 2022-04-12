@@ -37,9 +37,13 @@ func _animation():
 
 func _collision_handler():
 	for i in get_slide_count():
-		$Arrow.play()
+		var collision = get_slide_collision(i)
+		if collision.collider.is_in_group("colliding_audio"):
+			collision.collider.get_node("Audio").play()
+		else:
+			$Arrow.play()
 		dir = Vector2.ZERO
-		get_tree().current_scene.get_node("Character").shooting = false
+		get_tree().current_scene.get_node("Colorizer").get_node("Character").shooting = false
 		animation.play("Free")
 
 
@@ -49,5 +53,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _reset():
 	get_tree().current_scene.shooting = false
-	get_tree().current_scene.get_node("Character").canShoot = true
+	get_tree().current_scene.get_node("Colorizer").get_node("Character").canShoot = true
 	queue_free()
