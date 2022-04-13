@@ -49,6 +49,6 @@ func _change_color():
 			if MANAGER.stage >= 16:
 				$Colorizer.modulate = Color("cf72c9") #ROSA
 				if MANAGER.stage >= 21:
-					$Colorizer.modulate = Color("ff0000") #VERMELHO
+					$Colorizer.modulate = Color("d02b2b") #VERMELHO
 	else:
 		$Colorizer.modulate = Color("996600") #MARROM/LARANJA

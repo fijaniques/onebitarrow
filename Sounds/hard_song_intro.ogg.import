@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hard_song_intro.ogg-8eac70766a2a691cea89bad9253f23d8.oggstr"
+
+[deps]
+
+source_file="res://Sounds/hard_song_intro.ogg"
+dest_files=[ "res://.import/hard_song_intro.ogg-8eac70766a2a691cea89bad9253f23d8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

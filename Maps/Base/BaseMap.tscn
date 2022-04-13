@@ -846,3 +846,5 @@ position = Vector2( 136, 128 )
 [node name="Barriers" type="Node2D" parent="Colorizer"]
 
 [node name="Rebound" type="Node2D" parent="Colorizer"]
+
+[node name="Switches" type="Node2D" parent="Colorizer"]

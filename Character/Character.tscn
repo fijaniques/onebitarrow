@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Sprite/character.png" type="Texture" id=1]
 [ext_resource path="res://Character/Character.gd" type="Script" id=2]
@@ -189,6 +189,9 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
+[sub_resource type="RectangleShape2D" id=49]
+extents = Vector2( 3, 6.5 )
+
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 35
@@ -222,6 +225,13 @@ anims/ShootDown = SubResource( 46 )
 anims/ShootUp = SubResource( 47 )
 anims/Walk = SubResource( 42 )
 
+[node name="Killer" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Collision" type="CollisionShape2D" parent="Killer"]
+position = Vector2( 1, 0.5 )
+shape = SubResource( 49 )
+
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="Death" type="AudioStreamPlayer" parent="Audio"]
@@ -239,3 +249,5 @@ stream = ExtResource( 9 )
 [node name="Teleport" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 4 )
 volume_db = -8.273
+
+[connection signal="body_entered" from="Killer" to="." method="_on_Killer_body_entered"]

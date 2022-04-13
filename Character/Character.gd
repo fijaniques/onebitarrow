@@ -134,3 +134,10 @@ func _animation():
 				animation.play("ShootUp")
 			elif Input.is_action_pressed("s"):
 				animation.play("ShootDown")
+
+
+func _on_Killer_body_entered(body):
+	$Audio/Death.play()
+	canMove = false
+	dead = true
+	animation.play("Dead")

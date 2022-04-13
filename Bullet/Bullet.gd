@@ -20,6 +20,10 @@ func _physics_process(delta):
 func _movement():
 	velocity = dir * speed
 	velocity = move_and_slide(velocity)
+	if Input.is_action_just_pressed("free"):
+		get_tree().current_scene.get_node("Colorizer").get_node("Character").shooting = false
+		animation.play("Free")
+		$Free.play()
 
 
 func _animation():
