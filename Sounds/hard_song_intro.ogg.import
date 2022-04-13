@@ -11,5 +11,5 @@ dest_files=[ "res://.import/hard_song_intro.ogg-8eac70766a2a691cea89bad9253f23d8
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

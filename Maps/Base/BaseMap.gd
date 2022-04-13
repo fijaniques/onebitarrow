@@ -8,6 +8,7 @@ var shooting: bool = false
 var bInstance
 
 func _ready():
+	_start_scene()
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
 	$Colorizer/Character.connect("teleport", self, "_teleport")
 	_change_color()
@@ -34,10 +35,10 @@ func _teleport():
 
 
 func _change_scene():
-	MANAGER.stage += 1
 	var a = name.replace("Map", "")
 	var b = int(a)
 	var nextScene = str("res://Maps/Map", b +1, "/Map", b +1, ".tscn")
+	_change_color()
 	get_tree().change_scene(nextScene)
 
 
@@ -52,3 +53,10 @@ func _change_color():
 					$Colorizer.modulate = Color("d02b2b") #VERMELHO
 	else:
 		$Colorizer.modulate = Color("996600") #MARROM/LARANJA
+
+
+func _start_scene():
+	var a = name.replace("Map", "")
+	var b = int(a)
+	MANAGER.stage = b
+	MANAGER._play()
