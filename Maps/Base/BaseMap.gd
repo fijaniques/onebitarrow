@@ -37,7 +37,12 @@ func _teleport():
 func _change_scene():
 	var a = name.replace("Map", "")
 	var b = int(a)
-	var nextScene = str("res://Maps/Map", b +1, "/Map", b +1, ".tscn")
+	var nextScene
+	if MANAGER.stage < 9:
+		nextScene = str("res://Maps/Map0", b +1, "/Map0", b +1, ".tscn")
+	else:
+		print(nextScene)
+		nextScene = str("res://Maps/Map", b +1, "/Map", b +1, ".tscn")
 	_change_color()
 	get_tree().change_scene(nextScene)
 
@@ -60,3 +65,4 @@ func _start_scene():
 	var b = int(a)
 	MANAGER.stage = b
 	MANAGER._play()
+	$Colorizer/Door._set_start()

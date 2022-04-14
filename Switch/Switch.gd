@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var ani = $AnimationPlayer
+export var timerActive: bool = false
 
 func _ready():
 	ani.play("Normal")

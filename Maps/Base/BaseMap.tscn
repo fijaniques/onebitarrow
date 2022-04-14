@@ -838,12 +838,16 @@ format = 1
 [node name="Character" parent="Colorizer" instance=ExtResource( 3 )]
 position = Vector2( 120, 128 )
 
+[node name="Collectible" parent="Colorizer" instance=ExtResource( 6 )]
+
 [node name="Door" parent="Colorizer" instance=ExtResource( 5 )]
 position = Vector2( 136, 128 )
 
-[node name="Collectible" parent="Colorizer" instance=ExtResource( 6 )]
-
 [node name="Barriers" type="Node2D" parent="Colorizer"]
+
+[node name="Guns" type="Node2D" parent="Colorizer"]
+
+[node name="Key" type="Node2D" parent="Colorizer"]
 
 [node name="Rebound" type="Node2D" parent="Colorizer"]
 

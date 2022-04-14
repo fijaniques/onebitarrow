@@ -42,14 +42,20 @@ func _get_input():
 		elif hDir < 0:
 			hDir = -1
 		
-		if Input.is_action_just_pressed("space"):
+		if Input.is_action_just_pressed("shoot"):
 			if !shooting and canShoot:
 				_shoot()
 			elif shooting and !canShoot:
 				_teleport()
 		
-		if Input.is_action_just_pressed("w") and is_on_floor():
+		if Input.is_action_just_pressed("jump") and is_on_floor():
 			_jump()
+		
+		if Input.is_action_just_pressed("restart"):
+			$Audio/Death.play()
+			canMove = false
+			dead = true
+			animation.play("Dead")
 
 
 func _movement():
