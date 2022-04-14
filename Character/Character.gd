@@ -52,10 +52,7 @@ func _get_input():
 			_jump()
 		
 		if Input.is_action_just_pressed("restart"):
-			$Audio/Death.play()
-			canMove = false
-			dead = true
-			animation.play("Dead")
+			_dying()
 
 
 func _movement():
@@ -100,11 +97,16 @@ func _teleport():
 func _trap_collision():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Traps":
-			$Audio/Death.play()
-			canMove = false
-			dead = true
-			animation.play("Dead")
+		print(collision.collider)
+		if collision.collider.is_in_group("Traps"):
+			_dying()
+
+
+func _dying():
+	$Audio/Death.play()
+	canMove = false
+	dead = true
+	animation.play("Dead")
 
 
 func _dead():
@@ -143,7 +145,4 @@ func _animation():
 
 
 func _on_Killer_body_entered(body):
-	$Audio/Death.play()
-	canMove = false
-	dead = true
-	animation.play("Dead")
+	_dying()

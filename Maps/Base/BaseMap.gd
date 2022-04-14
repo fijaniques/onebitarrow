@@ -65,4 +65,3 @@ func _start_scene():
 	var b = int(a)
 	MANAGER.stage = b
 	MANAGER._play()
-	$Colorizer/Door._set_start()
