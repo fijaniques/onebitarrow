@@ -1,11 +1,10 @@
-extends Node2D
+extends Timer
 
 onready var switchCheck = get_tree().current_scene.get_node("Colorizer").get_node("Switches")
 onready var gunCheck = get_tree().current_scene.get_node("Colorizer").get_node("Guns")
 
 func _ready():
-	if get_child_count() > 0:
-		$Timer.start()
+	start()
 
 
 func _on_Timer_timeout():

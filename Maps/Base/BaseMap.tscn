@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://Sprite/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/trap_tiles.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Collectible/Collectible.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprite/normal_tiles.png" type="Texture" id=7]
 [ext_resource path="res://Sprite/activatable_tiles.png" type="Texture" id=8]
+[ext_resource path="res://Key/Key.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=57]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -849,6 +850,11 @@ position = Vector2( 136, 128 )
 
 [node name="Key" type="Node2D" parent="Colorizer"]
 
+[node name="Key" parent="Colorizer/Key" instance=ExtResource( 9 )]
+position = Vector2( -64, 0 )
+
 [node name="Rebound" type="Node2D" parent="Colorizer"]
 
 [node name="Switches" type="Node2D" parent="Colorizer"]
+
+[node name="Timers" type="Node2D" parent="."]
