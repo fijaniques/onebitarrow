@@ -1,12 +1,11 @@
 extends KinematicBody2D
 
-onready var ani = $Animation
-var speed = 200
+var speed: int = 200
 var velocity = Vector2.ZERO
 var dir = Vector2.ZERO
 
 func _ready():
-	$Collider/Collision.set_disabled(false)
+	$Animation.play("Idle")
 
 
 func _physics_process(delta):
@@ -19,4 +18,5 @@ func _movement():
 
 
 func _on_Collider_body_entered(body):
-	ani.play("Collide")
+	dir = Vector2.ZERO
+	$Animation.play("Collide")
