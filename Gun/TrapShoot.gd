@@ -20,6 +20,8 @@ func _movement():
 
 func _collision_handler():
 	for i in get_slide_count():
+		$Collision.disabled = true
+		dir = Vector2.ZERO
 		var collision = get_slide_collision(i)
 		if collision.collider.name == "Character":
 			collision.collider._dying()

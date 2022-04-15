@@ -11,6 +11,7 @@ func _play():
 	elif stage == 20:
 		playing = false
 		$HardIntro.play()
+		$Theme.stop()
 	elif stage > 20 and !playing:
 		playing = true
 		$HardTheme.play()

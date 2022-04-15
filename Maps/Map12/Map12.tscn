@@ -22,7 +22,7 @@ tile_data = PoolIntArray( 131073, 0, 196608, 131074, 0, 196609, 131075, 0, 19660
 position = Vector2( 232, 24 )
 flipped = true
 
-[node name="Door" parent="Colorizer" index="5"]
+[node name="Door" parent="Colorizer" index="6"]
 position = Vector2( 24, 248 )
 
 [node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 3 )]
