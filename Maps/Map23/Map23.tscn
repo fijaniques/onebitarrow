@@ -70,6 +70,7 @@ position = Vector2( 208, 72 )
 rotation = 3.14159
 
 [node name="Switch" parent="Colorizer/Switches" index="0" instance=ExtResource( 3 )]
+position = Vector2( -16, 0 )
 timerActive = true
 
 [node name="Timer" parent="Timers" index="0" instance=ExtResource( 2 )]
