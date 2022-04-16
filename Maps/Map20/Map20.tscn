@@ -19,11 +19,11 @@ tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 position = Vector2( 248, 232 )
 flipped = true
 
-[node name="Door" parent="Colorizer" index="5"]
-position = Vector2( 128, 128 )
-
-[node name="Collectible" parent="Colorizer" index="6"]
+[node name="Collectible" parent="Colorizer" index="5"]
 position = Vector2( 128, 232 )
+
+[node name="Door" parent="Colorizer" index="6"]
+position = Vector2( 128, 128 )
 
 [node name="Rebound" parent="Colorizer/Rebound" index="0" instance=ExtResource( 2 )]
 position = Vector2( 24, 232 )

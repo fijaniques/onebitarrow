@@ -20,4 +20,6 @@ func _play():
 func _on_HardIntro_finished():
 	$HardIntro.play()
 	if ready21:
+		ready21 = false
+		$HardIntro.stop()
 		get_tree().current_scene._change_scene()
