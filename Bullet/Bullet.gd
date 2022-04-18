@@ -51,10 +51,6 @@ func _collision_handler():
 		animation.play("Free")
 
 
-func _on_VisibilityNotifier2D_screen_exited():
-	_reset()
-
-
 func _reset():
 	get_tree().current_scene.shooting = false
 	get_tree().current_scene.get_node("Colorizer").get_node("Character").canShoot = true

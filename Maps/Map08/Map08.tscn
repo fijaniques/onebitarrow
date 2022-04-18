@@ -14,11 +14,11 @@ tile_data = PoolIntArray( 65543, 0, 3, 131079, 0, 65539, 196615, 0, 131075, 5242
 [node name="Character" parent="Colorizer" index="4"]
 position = Vector2( 8, 168 )
 
-[node name="Door" parent="Colorizer" index="5"]
-position = Vector2( 248, 24 )
-
-[node name="Collectible" parent="Colorizer" index="6"]
+[node name="Collectible" parent="Colorizer" index="5"]
 position = Vector2( 64, 72 )
+
+[node name="Door" parent="Colorizer" index="6"]
+position = Vector2( 248, 24 )
 
 [node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 2 )]
 position = Vector2( 136, 152 )

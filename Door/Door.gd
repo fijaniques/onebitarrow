@@ -11,5 +11,13 @@ func _change_scene():
 	if MANAGER.stage == 20:
 		MANAGER.ready21 = true
 		get_tree().current_scene.get_node("FG").visible = true
+	elif MANAGER.stage == 25:
+			MANAGER.ready26 = true
+	elif MANAGER.stage == 27:
+		MANAGER.get_node("Final").stop()
+		get_tree().current_scene._change_scene()
+	elif MANAGER.stage == 24:
+		MANAGER.get_node("HardTheme").stop()
+		get_tree().current_scene._change_scene()
 	else:
 		get_tree().current_scene._change_scene()

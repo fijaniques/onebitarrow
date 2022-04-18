@@ -7,6 +7,8 @@ var bullet = preload("res://Bullet/Bullet.tscn")
 var shooting: bool = false
 var bInstance
 
+var collectible: bool = false
+
 func _ready():
 	_start_scene()
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
@@ -38,12 +40,22 @@ func _change_scene():
 	var a = name.replace("Map", "")
 	var b = int(a)
 	var nextScene
-	if MANAGER.stage < 9:
-		nextScene = str("res://Maps/Map0", b +1, "/Map0", b +1, ".tscn")
-	else:
-		nextScene = str("res://Maps/Map", b +1, "/Map", b +1, ".tscn")
+	if collectible:
+		MANAGER.collectible += 1
+	if MANAGER.stage < 24 or MANAGER.stage > 24:
+		if MANAGER.stage < 9:
+			nextScene = str("res://Maps/Map0", b +1, "/Map0", b +1, ".tscn")
+		elif MANAGER.stage == 27:
+			nextScene = str("res://Menus/Controls/Controls.tscn")
+		else:
+			nextScene = str("res://Maps/Map", b +1, "/Map", b +1, ".tscn")
+		get_tree().change_scene(nextScene)
+	elif MANAGER.stage == 24:
+		if MANAGER.collectible == 24:
+			get_tree().change_scene("res://Maps/Map25/Map25.tscn")
+		else:
+			get_tree().change_scene("res://Menus/Controls/Controls.tscn")
 	_change_color()
-	get_tree().change_scene(nextScene)
 
 
 func _change_color():
@@ -55,6 +67,8 @@ func _change_color():
 				$Colorizer.modulate = Color("cf72c9") #ROSA
 				if MANAGER.stage >= 21:
 					$Colorizer.modulate = Color("d02b2b") #VERMELHO
+					if MANAGER.stage >= 26:
+						$Colorizer.modulate = Color(0,0,0) #PRETO
 	else:
 		$Colorizer.modulate = Color("996600") #MARROM/LARANJA
 

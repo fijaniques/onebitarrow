@@ -22,6 +22,9 @@ tile_data = PoolIntArray( 131073, 0, 196608, 131074, 0, 196609, 131075, 0, 19660
 position = Vector2( 232, 24 )
 flipped = true
 
+[node name="Collectible" parent="Colorizer" index="5"]
+position = Vector2( 24, 56 )
+
 [node name="Door" parent="Colorizer" index="6"]
 position = Vector2( 24, 248 )
 
