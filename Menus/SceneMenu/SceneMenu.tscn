@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menus/SceneMenu/SceneMenu.gd" type="Script" id=1]
+[ext_resource path="res://Sprite/scene_selection.png" type="Texture" id=2]
+[ext_resource path="res://Sprite/selection.png" type="Texture" id=3]
+[ext_resource path="res://Sprite/key.png" type="Texture" id=4]
+
+[node name="SceneMenu1" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Colorizer" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Colorizer"]
+margin_left = 32.0
+margin_top = 105.0
+margin_right = 78.0
+margin_bottom = 151.0
+
+[node name="ColorRect2" type="ColorRect" parent="Colorizer"]
+margin_left = 105.0
+margin_top = 105.0
+margin_right = 151.0
+margin_bottom = 151.0
+
+[node name="ColorRect3" type="ColorRect" parent="Colorizer"]
+margin_left = 178.0
+margin_top = 105.0
+margin_right = 224.0
+margin_bottom = 151.0
+
+[node name="ColorRect4" type="ColorRect" parent="Colorizer"]
+margin_left = 32.0
+margin_top = 178.0
+margin_right = 78.0
+margin_bottom = 224.0
+
+[node name="ColorRect5" type="ColorRect" parent="Colorizer"]
+margin_left = 105.0
+margin_top = 178.0
+margin_right = 151.0
+margin_bottom = 224.0
+
+[node name="ColorRect6" type="ColorRect" parent="Colorizer"]
+margin_left = 178.0
+margin_top = 178.0
+margin_right = 224.0
+margin_bottom = 224.0
+
+[node name="Layout" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Selections" type="Node2D" parent="."]
+
+[node name="1" type="Position2D" parent="Selections"]
+position = Vector2( 32, 105 )
+
+[node name="Locker" type="Sprite" parent="Selections/1"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+texture = ExtResource( 4 )
+
+[node name="2" type="Position2D" parent="Selections"]
+position = Vector2( 105, 105 )
+
+[node name="Locker" type="Sprite" parent="Selections/2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+texture = ExtResource( 4 )
+
+[node name="3" type="Position2D" parent="Selections"]
+position = Vector2( 178, 105 )
+
+[node name="Locker" type="Sprite" parent="Selections/3"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+texture = ExtResource( 4 )
+
+[node name="4" type="Position2D" parent="Selections"]
+position = Vector2( 32, 178 )
+
+[node name="Locker" type="Sprite" parent="Selections/4"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+texture = ExtResource( 4 )
+
+[node name="5" type="Position2D" parent="Selections"]
+position = Vector2( 105, 178 )
+
+[node name="Locker" type="Sprite" parent="Selections/5"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+texture = ExtResource( 4 )
+
+[node name="6" type="Position2D" parent="Selections"]
+position = Vector2( 178, 178 )
+
+[node name="Locker" type="Sprite" parent="Selections/6"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+texture = ExtResource( 4 )
+
+[node name="Selection" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
