@@ -1,5 +1,6 @@
 extends Node2D
 
+var world: int
 var stage: int = 1
 
 var playing: bool = false
@@ -8,25 +9,34 @@ var ready26: bool = false
 
 var collectible: int = 0
 
+var c1 = []
+var c2 = []
+var c3 = []
+var c4 = []
+var c5 = []
+var c6 = []
+
 func _play():
-	if !playing and stage < 20:
-		playing = true
-		$Theme.play()
-	elif stage == 20:
-		playing = false
-		$HardIntro.play()
-		$Theme.stop()
-	elif stage > 20 and stage < 25 and !playing:
-		playing = true
-		$HardTheme.play()
-	elif stage == 25:
-		playing = false
-		$FinalIntro.play()
-		$HardTheme.stop()
-	elif stage > 25 and !playing:
-		playing = true
-		$Final.play()
-		
+	if !playing:
+		if world == 1:
+			playing = true
+			$World1.play()
+		elif world == 2:
+			playing = true
+			$World1.stop()
+			$World2.play()
+		elif world == 3:
+			playing = true
+			$World2.stop()
+			$World3.play()
+		elif world == 4:
+			playing = true
+			$World3.stop()
+			$World4.play()
+		elif world == 5:
+			playing = true
+			$World4.stop()
+			$World5.play()
 
 
 func _on_HardIntro_finished():
