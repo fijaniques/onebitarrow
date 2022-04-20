@@ -7,7 +7,7 @@ var bullet = preload("res://Bullet/Bullet.tscn")
 var shooting: bool = false
 var bInstance
 
-var collectible: bool = false
+var pickedCollectible: bool = false
 var haveCoins: bool = false
 export var unlocked: bool = false
 
@@ -56,33 +56,14 @@ func _get_world():
 func _change_scene():
 	var a = int(name.replace("Map", ""))
 	MANAGER.stage = a
-	if collectible:
+	
+	if pickedCollectible:
 		MANAGER.collectible += 1
-		if MANAGER.world == 1:
-			MANAGER.c1.append("collectible")
-			if MANAGER.c1.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 2:
-			MANAGER.c2.append("collectible")
-			if MANAGER.c2.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 3:
-			MANAGER.c3.append("collectible")
-			if MANAGER.c3.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 4:
-			MANAGER.c4.append("collectible")
-			if MANAGER.c4.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 5:
-			MANAGER.c5.append("collectible")
-			if MANAGER.c5.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 6:
-			MANAGER.c6.append("collectible")
-			if MANAGER.c6.size() == 5:
-				haveCoins = true
+		MANAGER.coins[MANAGER.world -1].append("coin")
+		if MANAGER.coins[MANAGER.world -1].size() == 5:
+			haveCoins = true
 	var nextScene
+	
 	if haveCoins or MANAGER.stage < 5:
 		nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
 	else:
@@ -110,7 +91,6 @@ func _change_color():
 
 
 func _start_scene():
-	var a = name.replace("Map0", "")
-	var b = int(a)
-	MANAGER.stage = b
+	MANAGER.stage = int(name.replace("Map0", ""))
 	MANAGER._play()
+	MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1

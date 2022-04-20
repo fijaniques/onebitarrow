@@ -12,7 +12,7 @@ func _on_Collectible_body_entered(body):
 
 func _picked():
 	if canPick:
-		get_tree().current_scene.collectible = true
+		get_tree().current_scene.pickedCollectible = true
 		canPick = false
 		visible = false
 		$Pick.play()

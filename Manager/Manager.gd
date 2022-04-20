@@ -9,12 +9,14 @@ var ready26: bool = false
 
 var collectible: int = 0
 
-var c1 = []
-var c2 = []
-var c3 = []
-var c4 = []
-var c5 = []
-var c6 = []
+var coins = [[], [], [], [], [], []]
+var reached = [[], [], [], [], [], []]
+
+func _ready():
+	for i in reached.size():
+		for c in reached.size():
+			reached[i].append(0)
+
 
 func _play():
 	if !playing:
@@ -37,6 +39,10 @@ func _play():
 			playing = true
 			$World4.stop()
 			$World5.play()
+		elif world == 6:
+			playing = true
+			$World5.stop()
+			$World6.play()
 
 
 func _on_HardIntro_finished():
