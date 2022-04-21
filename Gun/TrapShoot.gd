@@ -20,6 +20,7 @@ func _movement():
 
 func _collision_handler():
 	for i in get_slide_count():
+		$Explode.play()
 		$Collision.disabled = true
 		dir = Vector2.ZERO
 		var collision = get_slide_collision(i)

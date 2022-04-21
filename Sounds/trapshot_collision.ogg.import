@@ -11,5 +11,5 @@ dest_files=[ "res://.import/trapshot_collision.ogg-ef7973ca42ac82a354e670fc8112e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

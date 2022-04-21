@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/SceneMenu/SceneMenu.gd" type="Script" id=1]
-[ext_resource path="res://Sprite/scene_selection.png" type="Texture" id=2]
 [ext_resource path="res://Sprite/selection.png" type="Texture" id=3]
 [ext_resource path="res://Sprite/key.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=5]
@@ -57,11 +56,6 @@ margin_left = 178.0
 margin_top = 178.0
 margin_right = 224.0
 margin_bottom = 224.0
-
-[node name="Layout" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 2 )
-centered = false
 
 [node name="World" type="Label" parent="."]
 anchor_right = 1.0

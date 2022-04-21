@@ -3,6 +3,8 @@ extends Node2D
 var world: int
 var stage: int = 1
 
+var preSix: int = 0
+
 var playing: bool = false
 var ready21: bool = false
 var ready26: bool = false
@@ -20,29 +22,13 @@ func _ready():
 
 func _play():
 	if !playing:
-		if world == 1:
-			playing = true
-			$World1.play()
-		elif world == 2:
-			playing = true
-			$World1.stop()
-			$World2.play()
-		elif world == 3:
-			playing = true
-			$World2.stop()
-			$World3.play()
-		elif world == 4:
-			playing = true
-			$World3.stop()
-			$World4.play()
-		elif world == 5:
-			playing = true
-			$World4.stop()
-			$World5.play()
-		elif world == 6:
-			playing = true
-			$World5.stop()
-			$World6.play()
+		if world != 6:
+			$Songs.get_node(str("World", world)).play()
+			$Songs.get_node(str("World", world -1)).stop()
+		else:
+			$Songs.get_node(str("World", world)).play()
+			$Songs/World5Pos.stop()
+		playing = true
 
 
 func _on_HardIntro_finished():
@@ -54,10 +40,13 @@ func _on_HardIntro_finished():
 		$HardIntro.play()
 
 
-func _on_FinalIntro_finished():
-	if ready26:
-		ready26 = false
-		$FinalIntro.stop()
-		get_tree().current_scene._change_scene()
+func _on_World6_finished():
+	if preSix < 1:
+		$Songs/World6.play()
+		preSix +=1
 	else:
-		$FinalIntro.play()
+		$Songs/World6Pos.play()
+
+
+func _on_World5_finished():
+	$Songs/World5Pos.play()
