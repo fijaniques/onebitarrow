@@ -88,4 +88,4 @@ shape = SubResource( 5 )
 
 [node name="Explode" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -15.0
