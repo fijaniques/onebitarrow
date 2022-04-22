@@ -20,7 +20,7 @@ tile_data = PoolIntArray( 458757, 0, 196611, 851969, 0, 196611, 851979, 0, 19661
 tile_data = PoolIntArray( 65537, 0, 196608, 65538, 0, 196609, 65539, 0, 196609, 65540, 0, 196609, 65541, 0, 196609, 65542, 0, 196609, 65543, 0, 196609, 65544, 0, 196609, 65545, 0, 196609, 65546, 0, 196609, 65547, 0, 196609, 65548, 0, 196609, 65549, 0, 196609, 65550, 0, 196610 )
 
 [node name="Character" parent="Colorizer" index="4"]
-position = Vector2( 72, 232 )
+position = Vector2( 248, 56 )
 flipped = true
 
 [node name="Collectible" parent="Colorizer" index="5"]
