@@ -6,6 +6,7 @@ var world: int
 func _ready():
 	world = 1
 	selected = 1
+	_audio_manager()
 	_get_selection()
 	_get_world()
 	_unlock_check()
@@ -61,3 +62,9 @@ func _colorize():
 						$Colorizer.modulate = Color(0,0,0) #PRETO
 	else:
 		$Colorizer.modulate = Color("996600") #MARROM/LARANJA
+
+
+func _audio_manager():
+	MANAGER.playing = false
+	for audio in MANAGER.get_node("Songs").get_child_count():
+		MANAGER.get_node("Songs").get_child(audio).stop()

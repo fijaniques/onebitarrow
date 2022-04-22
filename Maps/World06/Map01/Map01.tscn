@@ -6,6 +6,7 @@
 [ext_resource path="res://Timer/Timer.tscn" type="PackedScene" id=4]
 
 [node name="Map01" instance=ExtResource( 1 )]
+lastStage = true
 
 [node name="WallOut" parent="." index="1"]
 collision_mask = 16

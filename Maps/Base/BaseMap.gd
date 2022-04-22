@@ -9,7 +9,8 @@ var bInstance
 
 var pickedCollectible: bool = false
 var haveCoins: bool = false
-export var unlocked: bool = false
+#export var unlocked: bool = false
+export var lastStage: bool = false
 
 func _ready():
 	_get_world()
@@ -63,13 +64,18 @@ func _change_scene():
 		if MANAGER.coins[MANAGER.world -1].size() == 5:
 			haveCoins = true
 	var nextScene
-	
-	if haveCoins or MANAGER.stage < 5:
-		nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
+	if !lastStage:
+		if haveCoins or MANAGER.stage < 5:
+			nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
+		else:
+			nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
+			MANAGER.world += 1
+			MANAGER.playing = false
 	else:
-		nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
-		MANAGER.world += 1
-		MANAGER.playing = false
+		nextScene = "res://Maps/End/End.tscn"
+		for audio in MANAGER.get_node("Songs").get_child_count():
+			MANAGER.get_node("Songs").get_child(audio).stop()
+			MANAGER.playing = false
 	
 	get_tree().change_scene(nextScene)
 	_change_color()
@@ -91,6 +97,9 @@ func _change_color():
 
 
 func _start_scene():
-	MANAGER.stage = int(name.replace("Map0", ""))
-	MANAGER._play()
+	if name != "End":
+		MANAGER.stage = int(name.replace("Map0", ""))
+	if !MANAGER.playing:
+		MANAGER._play()
+		MANAGER.playing = true
 	MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1

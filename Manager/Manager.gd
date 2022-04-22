@@ -21,14 +21,19 @@ func _ready():
 
 
 func _play():
-	if !playing:
-		if world != 6:
-			$Songs.get_node(str("World", world)).play()
-			$Songs.get_node(str("World", world -1)).stop()
-		else:
-			$Songs.get_node(str("World", world)).play()
-			$Songs/World5Pos.stop()
-		playing = true
+	if get_tree().current_scene.name != "End":
+		if !playing:
+			if world != 6:
+				$Songs.get_node(str("World", world)).play()
+				$Songs.get_node(str("World", world -1)).stop()
+			else:
+				$Songs.get_node(str("World", world)).play()
+				$Songs/World5Pos.stop()
+			playing = true
+	else:
+		for audio in $Songs.get_child_count():
+			$Songs.get_child(audio).stop()
+		$Songs/PreCredit.play()
 
 
 func _on_HardIntro_finished():
@@ -50,3 +55,7 @@ func _on_World6_finished():
 
 func _on_World5_finished():
 	$Songs/World5Pos.play()
+
+
+func _on_PreCredit_finished():
+	$Songs/Credit.play()
