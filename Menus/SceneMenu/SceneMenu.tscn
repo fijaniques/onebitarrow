@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menus/SceneMenu/SceneMenu.gd" type="Script" id=1]
+[ext_resource path="res://Collectible/Collectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprite/selection.png" type="Texture" id=3]
 [ext_resource path="res://Sprite/key.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=5]
@@ -77,6 +78,11 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
 
+[node name="Collectible" parent="Selections/1" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+
 [node name="2" type="Position2D" parent="Selections"]
 position = Vector2( 105, 105 )
 
@@ -84,6 +90,11 @@ position = Vector2( 105, 105 )
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
+
+[node name="Collectible" parent="Selections/2" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
 
 [node name="3" type="Position2D" parent="Selections"]
 position = Vector2( 178, 105 )
@@ -93,6 +104,11 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
 
+[node name="Collectible" parent="Selections/3" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+
 [node name="4" type="Position2D" parent="Selections"]
 position = Vector2( 32, 178 )
 
@@ -100,6 +116,11 @@ position = Vector2( 32, 178 )
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
+
+[node name="Collectible" parent="Selections/4" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
 
 [node name="5" type="Position2D" parent="Selections"]
 position = Vector2( 105, 178 )
@@ -109,6 +130,11 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
 
+[node name="Collectible" parent="Selections/5" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
+
 [node name="6" type="Position2D" parent="Selections"]
 position = Vector2( 178, 178 )
 
@@ -116,6 +142,11 @@ position = Vector2( 178, 178 )
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
+
+[node name="Collectible" parent="Selections/6" instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 23, 22 )
 
 [node name="Selection" type="Sprite" parent="."]
 texture = ExtResource( 3 )

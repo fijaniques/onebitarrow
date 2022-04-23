@@ -10,6 +10,7 @@ func _ready():
 	_get_selection()
 	_get_world()
 	_unlock_check()
+	_collect_check()
 
 
 func _input(event):
@@ -20,10 +21,12 @@ func _input(event):
 	elif Input.is_action_just_pressed("s") and world > 1:
 		world -= 1
 		_get_world()
+		_collect_check()
 		_unlock_check()
 	elif Input.is_action_just_pressed("up") and world < 6:
 		world += 1
 		_get_world()
+		_collect_check()
 		_unlock_check()
 	_get_selection()
 	if MANAGER.reached[world -1][selected -1]:
@@ -47,6 +50,15 @@ func _unlock_check():
 			$Selections.get_child(i).get_node("Locker").set_visible(false)
 		else:
 			$Selections.get_child(i).get_node("Locker").set_visible(true)
+		
+		if MANAGER.coins[world -1][i] == 1:
+			$Selections.get_child(i).get_node("Collectible").set_visible(true)
+		else:
+			$Selections.get_child(i).get_node("Collectible").set_visible(false)
+
+
+func _collect_check():
+	pass
 
 
 func _colorize():

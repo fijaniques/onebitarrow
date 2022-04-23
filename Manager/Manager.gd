@@ -15,9 +15,8 @@ var coins = [[], [], [], [], [], []]
 var reached = [[], [], [], [], [], []]
 
 func _ready():
-	for i in reached.size():
-		for c in reached.size():
-			reached[i].append(0)
+	_fill_reached()
+	_fill_coins()
 
 
 func _play():
@@ -59,3 +58,15 @@ func _on_World5_finished():
 
 func _on_PreCredit_finished():
 	$Songs/Credit.play()
+
+
+func _fill_reached():
+	for i in reached.size():
+		for c in reached.size():
+			reached[i].append(0)
+
+
+func _fill_coins():
+	for i in coins.size():
+		for c in coins.size():
+			coins[i].append(0)

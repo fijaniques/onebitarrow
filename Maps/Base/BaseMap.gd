@@ -60,8 +60,11 @@ func _change_scene():
 	
 	if pickedCollectible:
 		MANAGER.collectible += 1
-		MANAGER.coins[MANAGER.world -1].append("coin")
-		if MANAGER.coins[MANAGER.world -1].size() == 5:
+		MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
+		var sum: int = 0
+		for c in MANAGER.coins[MANAGER.world -1].size():
+			sum += MANAGER.coins[MANAGER.world -1][c]
+		if sum == 5:
 			haveCoins = true
 	var nextScene
 	if !lastStage:
