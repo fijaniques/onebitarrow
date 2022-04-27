@@ -1,13 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/SceneMenu/SceneMenu.gd" type="Script" id=1]
 [ext_resource path="res://Collectible/Collectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprite/selection.png" type="Texture" id=3]
 [ext_resource path="res://Sprite/key.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Sprite/death_skull.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 5 )
 
 [node name="SceneMenu" type="Control"]
@@ -151,3 +158,37 @@ position = Vector2( 23, 22 )
 [node name="Selection" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 centered = false
+
+[node name="DeathCount" type="Node2D" parent="."]
+position = Vector2( 193, 40 )
+
+[node name="Sprite" type="Sprite" parent="DeathCount"]
+position = Vector2( -6, 0 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Label" type="Label" parent="DeathCount"]
+margin_left = 16.0
+margin_top = 2.0
+margin_right = 61.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+valign = 1
+
+[node name="Collectibles" type="Node2D" parent="."]
+position = Vector2( 196, 16 )
+
+[node name="Collectible" parent="Collectibles" instance=ExtResource( 2 )]
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Collectibles"]
+margin_left = 13.0
+margin_top = -6.0
+margin_right = 58.0
+margin_bottom = 10.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "0"
+valign = 1

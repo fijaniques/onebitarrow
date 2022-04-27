@@ -13,6 +13,7 @@ var haveCoins: bool = false
 export var lastStage: bool = false
 
 func _ready():
+	MANAGER.onStage = true
 	_get_world()
 	_start_scene()
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
@@ -26,6 +27,12 @@ func _input(event):
 		_change_scene()
 	elif Input.is_action_just_pressed("start"):
 		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
+	
+	if Input.is_action_just_pressed("back"):
+		if get_tree().paused:
+			get_tree().paused = false
+		else:
+			get_tree().paused = true
 
 
 func _shoot(dShot):

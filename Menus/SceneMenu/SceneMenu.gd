@@ -6,6 +6,7 @@ var world: int
 func _ready():
 	world = 1
 	selected = 1
+	_set_counters()
 	_audio_manager()
 	_get_selection()
 	_get_world()
@@ -14,6 +15,8 @@ func _ready():
 
 
 func _input(event):
+	if Input.is_action_just_pressed("back"):
+		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
 	if Input.is_action_just_pressed("d") and selected < 6:
 		selected += 1
 	elif Input.is_action_just_pressed("a") and selected > 1:
@@ -80,3 +83,8 @@ func _audio_manager():
 	MANAGER.playing = false
 	for audio in MANAGER.get_node("Songs").get_child_count():
 		MANAGER.get_node("Songs").get_child(audio).stop()
+
+
+func _set_counters():
+	$Collectibles/Label.text = str(MANAGER.collectible)
+	$DeathCount/Label.text = str(MANAGER.deaths)

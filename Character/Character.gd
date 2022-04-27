@@ -110,6 +110,7 @@ func _dying():
 
 func _dead():
 # warning-ignore:return_value_discarded
+	MANAGER.deaths += 1
 	get_tree().reload_current_scene()
 
 

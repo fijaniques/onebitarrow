@@ -12,20 +12,35 @@ tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 [node name="Activatable" parent="Colorizer" index="1"]
 tile_data = PoolIntArray( 131086, 0, 196611, 262156, 0, 0, 262157, 0, 1, 262158, 0, 2, 327692, 0, 131072, 327693, 0, 131073, 327694, 0, 131074, 655372, 0, 196608, 655373, 0, 196609, 655374, 0, 196610 )
 
-[node name="Activatable2" parent="Colorizer" index="2"]
+[node name="Points" parent="Colorizer" index="2"]
+tile_data = PoolIntArray( 131086, 0, 196611, 262156, 0, 0, 262157, 0, 1, 262158, 0, 2, 327692, 0, 131072, 327693, 0, 131073, 327694, 0, 131074, 655372, 0, 196608, 655373, 0, 196609, 655374, 0, 196610 )
+
+[node name="Activatable2" parent="Colorizer" index="3"]
 tile_data = PoolIntArray( 786437, 0, 0, 786438, 0, 1, 786439, 0, 1, 786440, 0, 1, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 2, 851973, 0, 131072, 851974, 0, 131073, 851975, 0, 131073, 851976, 0, 131073, 851977, 0, 131073, 851978, 0, 131073, 851979, 0, 131073, 851980, 0, 131073, 851981, 0, 131073, 851982, 0, 131074 )
 
-[node name="Traps" parent="Colorizer" index="3"]
+[node name="Points2" parent="Colorizer" index="4"]
+tile_data = PoolIntArray( 786437, 0, 0, 786438, 0, 1, 786439, 0, 1, 786440, 0, 1, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 2, 851973, 0, 131072, 851974, 0, 131073, 851975, 0, 131073, 851976, 0, 131073, 851977, 0, 131073, 851978, 0, 131073, 851979, 0, 131073, 851980, 0, 131073, 851981, 0, 131073, 851982, 0, 131074 )
+
+[node name="Traps" parent="Colorizer" index="5"]
 tile_data = PoolIntArray( 131073, 0, 196608, 131074, 0, 196609, 131075, 0, 196609, 131076, 0, 196609, 131077, 0, 196609, 131078, 0, 196609, 131079, 0, 196609, 131080, 0, 196609, 131081, 0, 196609, 131082, 0, 196609, 131083, 0, 196609, 131084, 0, 196609, 131085, 0, 196610, 720905, 0, 196608, 720906, 0, 196609, 720907, 0, 196609, 720908, 0, 196609, 720909, 0, 196609, 720910, 0, 196610, 917506, 0, 196608, 917507, 0, 196609, 917508, 0, 196609, 917509, 0, 196609, 917510, 0, 196609, 917511, 0, 196609, 917512, 0, 196609, 917513, 0, 196609, 917514, 0, 196609, 917515, 0, 196609, 917516, 0, 196609, 917517, 0, 196609, 917518, 0, 196610 )
 
-[node name="Character" parent="Colorizer" index="4"]
+[node name="Character" parent="Colorizer" index="6"]
 position = Vector2( 232, 24 )
 flipped = true
 
-[node name="Collectible" parent="Colorizer" index="5"]
+[node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( 24, 56 )
 
-[node name="Door" parent="Colorizer" index="6"]
+[node name="Switch" parent="Colorizer" index="8" instance=ExtResource( 2 )]
+position = Vector2( 24, 24 )
+
+[node name="Switch2" parent="Colorizer" index="9" instance=ExtResource( 2 )]
+position = Vector2( 64, 88 )
+
+[node name="Switch3" parent="Colorizer" index="10" instance=ExtResource( 2 )]
+position = Vector2( 184, 88 )
+
+[node name="Door" parent="Colorizer" index="11"]
 position = Vector2( 24, 248 )
 
 [node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 3 )]
@@ -111,12 +126,3 @@ position = Vector2( 216, 104 )
 
 [node name="Barrier28" parent="Colorizer/Barriers" index="27" instance=ExtResource( 3 )]
 position = Vector2( 232, 104 )
-
-[node name="Switch" parent="Colorizer" index="8" instance=ExtResource( 2 )]
-position = Vector2( 24, 24 )
-
-[node name="Switch2" parent="Colorizer" index="9" instance=ExtResource( 2 )]
-position = Vector2( 64, 88 )
-
-[node name="Switch3" parent="Colorizer" index="10" instance=ExtResource( 2 )]
-position = Vector2( 184, 88 )

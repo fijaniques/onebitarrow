@@ -13,19 +13,25 @@ tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 [node name="Activatable" parent="Colorizer" index="1"]
 tile_data = PoolIntArray( 393223, 0, 196611, 589828, 0, 196608, 589829, 0, 196610, 851972, 0, 196608, 851973, 0, 196610 )
 
-[node name="Activatable2" parent="Colorizer" index="2"]
+[node name="Points" parent="Colorizer" index="2"]
+tile_data = PoolIntArray( 393223, 0, 196611, 589828, 0, 196608, 589829, 0, 196610, 851972, 0, 196608, 851973, 0, 196610 )
+
+[node name="Activatable2" parent="Colorizer" index="3"]
 tile_data = PoolIntArray( 458756, 0, 196608, 458757, 0, 196610, 720900, 0, 196608, 720901, 0, 196610 )
 
-[node name="Traps" parent="Colorizer" index="3"]
+[node name="Points2" parent="Colorizer" index="4"]
+tile_data = PoolIntArray( 458756, 0, 196608, 458757, 0, 196610, 720900, 0, 196608, 720901, 0, 196610 )
+
+[node name="Traps" parent="Colorizer" index="5"]
 tile_data = PoolIntArray( 65538, 0, 196608, 65539, 0, 196609, 65540, 0, 196609, 65541, 0, 196609, 65542, 0, 196609, 65543, 0, 196609, 65544, 0, 196609, 65545, 0, 196609, 65546, 0, 196609, 65547, 0, 196609, 65548, 0, 196609, 65549, 0, 196610, 131086, 0, 196611, 589831, 0, 196611, 851982, 0, 196611, 917510, 0, 196611, 917512, 0, 196611, 917517, 0, 196611 )
 
-[node name="Character" parent="Colorizer" index="4"]
+[node name="Character" parent="Colorizer" index="6"]
 position = Vector2( 8, 104 )
 
-[node name="Collectible" parent="Colorizer" index="5"]
+[node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( 232, 114 )
 
-[node name="Door" parent="Colorizer" index="6"]
+[node name="Door" parent="Colorizer" index="8"]
 position = Vector2( 121, 248 )
 
 [node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 3 )]

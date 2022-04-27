@@ -2,14 +2,17 @@ extends Node2D
 
 var world: int
 var stage: int = 1
+var volume: int = -80
 
 var preSix: int = 0
 
 var playing: bool = false
+var onStage: bool = false
 var ready21: bool = false
 var ready26: bool = false
 
 var collectible: int = 0
+var deaths: int = 0
 
 var coins = [[], [], [], [], [], []]
 var reached = [[], [], [], [], [], []]
@@ -64,6 +67,7 @@ func _fill_reached():
 	for i in reached.size():
 		for c in reached.size():
 			reached[i].append(0)
+	reached[0][0] = 1
 
 
 func _fill_coins():
