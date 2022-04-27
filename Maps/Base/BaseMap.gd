@@ -14,6 +14,8 @@ export var lastStage: bool = false
 
 func _ready():
 	MANAGER.onStage = true
+	MANAGER.get_node("Menu/Menu").stop()
+	MANAGER.playingMenu = false
 	_get_world()
 	_start_scene()
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
@@ -25,14 +27,8 @@ func _input(event):
 	if Input.is_action_just_pressed("forward"):
 		$Colorizer/Collectible._picked()
 		_change_scene()
-	elif Input.is_action_just_pressed("start"):
+	elif Input.is_action_just_pressed("start") or Input.is_action_just_pressed("back"):
 		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
-	
-	if Input.is_action_just_pressed("back"):
-		if get_tree().paused:
-			get_tree().paused = false
-		else:
-			get_tree().paused = true
 
 
 func _shoot(dShot):

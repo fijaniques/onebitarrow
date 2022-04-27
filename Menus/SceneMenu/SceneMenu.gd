@@ -11,29 +11,30 @@ func _ready():
 	_get_selection()
 	_get_world()
 	_unlock_check()
-	_collect_check()
 
 
 func _input(event):
 	if Input.is_action_just_pressed("back"):
+		MANAGER.get_node("Menu/Back").play()
 		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
 	if Input.is_action_just_pressed("d") and selected < 6:
+		MANAGER.get_node("Menu/Change").play()
 		selected += 1
 	elif Input.is_action_just_pressed("a") and selected > 1:
+		MANAGER.get_node("Menu/Change").play()
 		selected -= 1
 	elif Input.is_action_just_pressed("s") and world > 1:
 		world -= 1
 		_get_world()
-		_collect_check()
 		_unlock_check()
 	elif Input.is_action_just_pressed("up") and world < 6:
 		world += 1
 		_get_world()
-		_collect_check()
 		_unlock_check()
 	_get_selection()
 	if MANAGER.reached[world -1][selected -1]:
 		if Input.is_action_just_pressed("jump"):
+			MANAGER.get_node("Menu/Accept").play()
 			var scene = str("res://Maps/World0", world, "/Map0", selected, "/Map0", selected, ".tscn")
 			get_tree().change_scene(scene)
 
@@ -60,10 +61,6 @@ func _unlock_check():
 			$Selections.get_child(i).get_node("Collectible").set_visible(false)
 
 
-func _collect_check():
-	pass
-
-
 func _colorize():
 	if world >= 2:
 		$Colorizer.modulate = Color("28b642") #VERDE
@@ -83,6 +80,10 @@ func _audio_manager():
 	MANAGER.playing = false
 	for audio in MANAGER.get_node("Songs").get_child_count():
 		MANAGER.get_node("Songs").get_child(audio).stop()
+	if !MANAGER.playingMenu:
+		MANAGER.get_node("Menu/Menu").play()
+		MANAGER.playingMenu = true
+		
 
 
 func _set_counters():

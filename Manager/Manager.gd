@@ -7,6 +7,7 @@ var volume: int = -80
 var preSix: int = 0
 
 var playing: bool = false
+var playingMenu: bool = false
 var onStage: bool = false
 var ready21: bool = false
 var ready26: bool = false
@@ -18,6 +19,8 @@ var coins = [[], [], [], [], [], []]
 var reached = [[], [], [], [], [], []]
 
 func _ready():
+	$Menu/Menu.play()
+	playingMenu = true
 	_fill_reached()
 	_fill_coins()
 

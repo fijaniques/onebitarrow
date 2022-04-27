@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Manager/Manager.gd" type="Script" id=1]
 [ext_resource path="res://Songs/World01.ogg" type="AudioStream" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Songs/Credits.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Songs/PreCredits.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Songs/World4.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Songs/Menu.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Menu/change.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/Menu/accept.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/Menu/back.ogg" type="AudioStream" id=15]
 
 [node name="Manager" type="Node2D"]
 script = ExtResource( 1 )
@@ -48,6 +52,20 @@ stream = ExtResource( 10 )
 
 [node name="Credit" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource( 9 )
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="Menu" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 12 )
+
+[node name="Change" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 13 )
+
+[node name="Accept" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 14 )
+
+[node name="Back" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 15 )
 
 [connection signal="finished" from="Songs/World5" to="." method="_on_World5_finished"]
 [connection signal="finished" from="Songs/World6" to="." method="_on_World6_finished"]
