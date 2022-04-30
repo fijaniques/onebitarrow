@@ -71,6 +71,8 @@ func _fill_reached():
 		for c in reached.size():
 			reached[i].append(0)
 	reached[0][0] = 1
+	reached[5].clear()
+	reached[5].append(0)
 
 
 func _fill_coins():

@@ -13,9 +13,7 @@ var haveCoins: bool = false
 export var lastStage: bool = false
 
 func _ready():
-	MANAGER.onStage = true
-	MANAGER.get_node("Menu/Menu").stop()
-	MANAGER.playingMenu = false
+	_audio_management()
 	_get_world()
 	_start_scene()
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
@@ -108,4 +106,14 @@ func _start_scene():
 	if !MANAGER.playing:
 		MANAGER._play()
 		MANAGER.playing = true
-	MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+	if MANAGER.stage != 6:
+		MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+	else:
+		MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+		MANAGER.reached[MANAGER.world][0] = 1
+
+
+func _audio_management():
+	MANAGER.onStage = true
+	MANAGER.get_node("Menu/Menu").stop()
+	MANAGER.playingMenu = false

@@ -17,17 +17,19 @@ func _input(event):
 	if Input.is_action_just_pressed("back"):
 		MANAGER.get_node("Menu/Back").play()
 		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
-	if Input.is_action_just_pressed("d") and selected < 6:
+	if Input.is_action_just_pressed("d") and selected < 6 and world != 6:
 		MANAGER.get_node("Menu/Change").play()
 		selected += 1
-	elif Input.is_action_just_pressed("a") and selected > 1:
+	elif Input.is_action_just_pressed("a") and selected > 1 and world != 6:
 		MANAGER.get_node("Menu/Change").play()
 		selected -= 1
 	elif Input.is_action_just_pressed("s") and world > 1:
+		selected = 1
 		world -= 1
 		_get_world()
 		_unlock_check()
 	elif Input.is_action_just_pressed("up") and world < 6:
+		selected = 1
 		world += 1
 		_get_world()
 		_unlock_check()
@@ -46,6 +48,15 @@ func _get_selection():
 func _get_world():
 	$World.text = str(world)
 	_colorize()
+	if world == 6:
+		for c in $Colorizer.get_child_count():
+			if c > 0:
+				$Colorizer.get_child(c).set_visible(false)
+				$Selections.get_child(c).set_visible(false)
+	else:
+		for c in $Colorizer.get_child_count():
+			$Colorizer.get_child(c).set_visible(true)
+			$Selections.get_child(c).set_visible(true)
 
 
 func _unlock_check():
