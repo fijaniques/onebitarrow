@@ -111,6 +111,10 @@ func _start_scene():
 	else:
 		MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
 		MANAGER.reached[MANAGER.world][0] = 1
+	
+	if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 0:
+		$Colorizer/Collectible.canPick = false
+		$Colorizer/Collectible.visible = false
 
 
 func _audio_management():

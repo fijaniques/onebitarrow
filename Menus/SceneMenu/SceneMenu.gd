@@ -60,7 +60,10 @@ func _get_world():
 
 
 func _unlock_check():
+	var sum = 0
 	for i in MANAGER.reached[world -1].size():
+		sum += MANAGER.coins[world -1][i]
+		print(sum)
 		if MANAGER.reached[world -1][i] == 1:
 			$Selections.get_child(i).get_node("Locker").set_visible(false)
 		else:
@@ -70,6 +73,9 @@ func _unlock_check():
 			$Selections.get_child(i).get_node("Collectible").set_visible(true)
 		else:
 			$Selections.get_child(i).get_node("Collectible").set_visible(false)
+	if sum >= 5:
+		$Selections.get_node("6/Locker").set_visible(false)
+		MANAGER.reached[world -1][5] = 1
 
 
 func _colorize():
@@ -94,7 +100,6 @@ func _audio_manager():
 	if !MANAGER.playingMenu:
 		MANAGER.get_node("Menu/Menu").play()
 		MANAGER.playingMenu = true
-		
 
 
 func _set_counters():
