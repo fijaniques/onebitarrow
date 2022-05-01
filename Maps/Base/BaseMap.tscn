@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Sprite/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/trap_tiles.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Sprite/normal_tiles.png" type="Texture" id=7]
 [ext_resource path="res://Sprite/activatable_tiles.png" type="Texture" id=8]
 [ext_resource path="res://Sprite/point_tiles.png" type="Texture" id=9]
+[ext_resource path="res://Maps/Base/Pause.gd" type="Script" id=10]
+[ext_resource path="res://Sprite/Menus/PauseMenu.png" type="Texture" id=11]
+[ext_resource path="res://Sprite/Menus/pause_menu_selection.png" type="Texture" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=57]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -820,3 +823,47 @@ position = Vector2( 136, 128 )
 [node name="Switches" type="Node2D" parent="Colorizer"]
 
 [node name="Timers" type="Node2D" parent="."]
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="BG" type="ColorRect" parent="Pause"]
+modulate = Color( 1, 1, 1, 0.509804 )
+anchor_top = 0.254
+anchor_right = 0.871
+anchor_bottom = 1.0
+margin_top = -65.024
+margin_right = 33.024
+color = Color( 0, 0, 0, 1 )
+
+[node name="MenuBG" type="ColorRect" parent="Pause"]
+modulate = Color( 1, 1, 1, 0.509804 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 63.0
+margin_right = -31.0
+margin_bottom = -63.0
+
+[node name="Sprite" type="Sprite" parent="Pause"]
+texture = ExtResource( 11 )
+centered = false
+
+[node name="Selection" type="Sprite" parent="Pause"]
+position = Vector2( 128, 83 )
+texture = ExtResource( 12 )
+
+[node name="Selections" type="Node2D" parent="Pause"]
+
+[node name="1" type="Position2D" parent="Pause/Selections"]
+position = Vector2( 128, 83 )
+
+[node name="2" type="Position2D" parent="Pause/Selections"]
+position = Vector2( 128, 107 )
+
+[node name="3" type="Position2D" parent="Pause/Selections"]
+position = Vector2( 128, 176 )

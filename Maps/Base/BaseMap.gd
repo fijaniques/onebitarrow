@@ -25,7 +25,7 @@ func _input(event):
 	if Input.is_action_just_pressed("forward"):
 		$Colorizer/Collectible._picked()
 		_change_scene()
-	elif Input.is_action_just_pressed("start") or Input.is_action_just_pressed("back"):
+	elif Input.is_action_just_pressed("back"):
 		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
 
 

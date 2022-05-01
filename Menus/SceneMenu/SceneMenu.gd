@@ -4,6 +4,7 @@ var selected: int
 var world: int
 
 func _ready():
+	MANAGER.onStage = false
 	world = 1
 	selected = 1
 	_set_counters()
@@ -63,7 +64,6 @@ func _unlock_check():
 	var sum = 0
 	for i in MANAGER.reached[world -1].size():
 		sum += MANAGER.coins[world -1][i]
-		print(sum)
 		if MANAGER.reached[world -1][i] == 1:
 			$Selections.get_child(i).get_node("Locker").set_visible(false)
 		else:
