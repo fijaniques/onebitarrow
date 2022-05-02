@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/World06Intro.ogg-fb082c657df80150823c5c9bef8893c5.oggstr"
+
+[deps]
+
+source_file="res://Songs/World06Intro.ogg"
+dest_files=[ "res://.import/World06Intro.ogg-fb082c657df80150823c5c9bef8893c5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
