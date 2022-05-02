@@ -18,11 +18,16 @@ var deaths: int = 0
 var coins = [[], [], [], [], [], []]
 var reached = [[], [], [], [], [], []]
 
+#SAVE
+export (Script) var saveClass
+
+
 func _ready():
 	$Menu/Menu.play()
 	playingMenu = true
 	_fill_reached()
 	_fill_coins()
+	_load()
 
 
 func _play():
@@ -79,3 +84,36 @@ func _fill_coins():
 	for i in coins.size():
 		for c in coins.size():
 			coins[i].append(0)
+
+
+func _save():
+	var newSave = saveClass.new()
+	newSave.collectible = collectible
+	newSave.deaths = deaths
+	newSave.coins = coins
+	newSave.reached = reached
+	
+	var dir = Directory.new()
+	var dirPath = "res://Save"
+	if !dir.dir_exists(dirPath):
+		dir.make_dir_recursive(dirPath)
+	
+	ResourceSaver.save("res://Save/save_file.tres", newSave)
+
+
+func _load():
+	var dir = Directory.new()
+	var filePath = "res://Save/save_file.tres"
+	if !dir.file_exists(filePath):
+		return false
+	
+	var saveState = load(filePath)
+	
+	collectible = saveState.collectible
+	deaths = saveState.deaths
+	coins = saveState.coins
+	reached = saveState.reached
+
+
+func _save_check():
+	pass

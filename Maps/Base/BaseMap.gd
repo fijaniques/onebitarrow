@@ -22,10 +22,10 @@ func _ready():
 
 
 func _input(event):
-	if Input.is_action_just_pressed("forward"):
-		$Colorizer/Collectible._picked()
-		_change_scene()
-	elif Input.is_action_just_pressed("back"):
+#	if Input.is_action_just_pressed("forward"):
+#		$Colorizer/Collectible._picked()
+#		_change_scene()
+	if Input.is_action_just_pressed("back"):
 		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
 
 
@@ -82,7 +82,7 @@ func _change_scene():
 			MANAGER.playing = false
 	
 	get_tree().change_scene(nextScene)
-	_change_color()
+#	_change_color()
 
 
 func _change_color():
@@ -115,6 +115,8 @@ func _start_scene():
 	if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 0:
 		$Colorizer/Collectible.canPick = false
 		$Colorizer/Collectible.visible = false
+	
+	MANAGER._save()
 
 
 func _audio_management():

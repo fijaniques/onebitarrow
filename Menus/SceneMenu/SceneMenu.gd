@@ -25,11 +25,13 @@ func _input(event):
 		MANAGER.get_node("Menu/Change").play()
 		selected -= 1
 	elif Input.is_action_just_pressed("s") and world > 1:
+		MANAGER.get_node("Menu/ChangeW").play()
 		selected = 1
 		world -= 1
 		_get_world()
 		_unlock_check()
 	elif Input.is_action_just_pressed("up") and world < 6:
+		MANAGER.get_node("Menu/ChangeW").play()
 		selected = 1
 		world += 1
 		_get_world()
