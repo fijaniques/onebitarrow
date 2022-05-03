@@ -94,16 +94,16 @@ func _save():
 	newSave.reached = reached
 	
 	var dir = Directory.new()
-	var dirPath = "res://Save"
+	var dirPath = "user://ShootPort/Save"
 	if !dir.dir_exists(dirPath):
 		dir.make_dir_recursive(dirPath)
 	
-	ResourceSaver.save("res://Save/save_file.tres", newSave)
+	ResourceSaver.save("user://ShootPort/Save/save_file.tres", newSave)
 
 
 func _load():
 	var dir = Directory.new()
-	var filePath = "res://Save/save_file.tres"
+	var filePath = "user://ShootPort/Save/save_file.tres"
 	if !dir.file_exists(filePath):
 		return false
 	
