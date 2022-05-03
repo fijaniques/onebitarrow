@@ -22,9 +22,9 @@ func _ready():
 
 
 func _input(event):
-#	if Input.is_action_just_pressed("forward"):
-#		$Colorizer/Collectible._picked()
-#		_change_scene()
+	if Input.is_action_just_pressed("forward"):
+		$Colorizer/Collectible._picked()
+		_change_scene()
 	if Input.is_action_just_pressed("back"):
 		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
 
@@ -56,6 +56,8 @@ func _get_world():
 
 
 func _change_scene():
+	if get_tree().current_scene.name == "Credits":
+		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
 	var a = int(name.replace("Map", ""))
 	MANAGER.stage = a
 	

@@ -113,7 +113,3 @@ func _load():
 	deaths = saveState.deaths
 	coins = saveState.coins
 	reached = saveState.reached
-
-
-func _save_check():
-	pass
