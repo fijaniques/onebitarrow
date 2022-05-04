@@ -40,10 +40,6 @@ func _play():
 				$Songs.get_node(str("World", world)).play()
 				$Songs/World5Pos.stop()
 			playing = true
-	else:
-		for audio in $Songs.get_child_count():
-			$Songs.get_child(audio).stop()
-		$Songs/PreCredit.play()
 
 
 func _on_HardIntro_finished():

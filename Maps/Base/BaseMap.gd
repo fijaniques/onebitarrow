@@ -56,7 +56,7 @@ func _get_world():
 
 
 func _change_scene():
-	if get_tree().current_scene.name == "Credits":
+	if get_tree().current_scene.name == "End":
 		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
 	var a = int(name.replace("Map", ""))
 	MANAGER.stage = a
@@ -78,13 +78,12 @@ func _change_scene():
 			MANAGER.world += 1
 			MANAGER.playing = false
 	else:
-		nextScene = "res://Maps/End/End.tscn"
+		nextScene = "res://Menus/Credits/Credits.tscn"
 		for audio in MANAGER.get_node("Songs").get_child_count():
 			MANAGER.get_node("Songs").get_child(audio).stop()
 			MANAGER.playing = false
 	
 	get_tree().change_scene(nextScene)
-#	_change_color()
 
 
 func _change_color():
