@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Menus/SceneMenu/SceneMenu.gd" type="Script" id=1]
 [ext_resource path="res://Collectible/Collectible.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprite/key.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Sprite/death_skull.png" type="Texture" id=6]
+[ext_resource path="res://Collectible/Special.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -15,6 +16,9 @@ font_data = ExtResource( 5 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 5 )
 
 [node name="SceneMenu" type="Control"]
@@ -90,6 +94,10 @@ visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 
+[node name="Special" parent="Selections/1" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 23, 21 )
+
 [node name="2" type="Position2D" parent="Selections"]
 position = Vector2( 105, 105 )
 
@@ -150,9 +158,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 texture = ExtResource( 4 )
 
-[node name="Collectible" parent="Selections/6" instance=ExtResource( 2 )]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
+[node name="Collectible" parent="Selections/6" instance=ExtResource( 7 )]
 position = Vector2( 23, 22 )
 
 [node name="Selection" type="Sprite" parent="."]
@@ -160,7 +166,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="DeathCount" type="Node2D" parent="."]
-position = Vector2( 193, 40 )
+position = Vector2( 193, 72 )
 
 [node name="Sprite" type="Sprite" parent="DeathCount"]
 position = Vector2( -6, 0 )
@@ -192,3 +198,18 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "0"
 valign = 1
+
+[node name="Specials" type="Node2D" parent="."]
+
+[node name="Special" parent="Specials" instance=ExtResource( 7 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 196, 48 )
+
+[node name="Label" type="Label" parent="Specials"]
+margin_left = 209.0
+margin_top = 42.0
+margin_right = 249.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"

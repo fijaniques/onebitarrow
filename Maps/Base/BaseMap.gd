@@ -25,9 +25,9 @@ func _ready():
 
 
 func _input(event):
-	if Input.is_action_just_pressed("forward"):
-		$Colorizer/Collectible._picked()
-		_change_scene()
+#	if Input.is_action_just_pressed("forward"):
+#		$Colorizer/Collectible._picked()
+#		_change_scene()
 	if Input.is_action_just_pressed("back"):
 		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
 
@@ -69,16 +69,9 @@ func _change_scene():
 	if !preSix:
 		if pickedSpecial:
 			MANAGER.special += 1
-			MANAGER.specialList.append(1)
+			MANAGER.specialList[MANAGER.world -1] = 1
 		
-		if pickedCollectible:
-			MANAGER.collectible += 1
-			MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
-			var sum: int = 0
-			for c in MANAGER.coins[MANAGER.world -1].size():
-				sum += MANAGER.coins[MANAGER.world -1][c]
-			if sum == 5:
-				haveCoins = true
+		_picked_collectible()
 		
 		if !lastStage:
 			if haveCoins or MANAGER.stage < 5:
@@ -93,7 +86,12 @@ func _change_scene():
 				MANAGER.get_node("Songs").get_child(audio).stop()
 				MANAGER.playing = false
 	else:
-		if MANAGER.specialList.size() >= 4:
+		_picked_collectible()
+		var sum: int = 0
+		for i in MANAGER.specialList.size():
+			sum += MANAGER.specialList[i]
+			
+		if sum >= 4:
 			haveSpecial = true
 		if haveSpecial:
 			nextScene = "res://Maps/World05/Map06/Map06.tscn"
@@ -104,6 +102,17 @@ func _change_scene():
 			nextScene = "res://Menus/Credits/Credits.tscn"
 	
 	get_tree().change_scene(nextScene)
+
+
+func _picked_collectible():
+	if pickedCollectible:
+			MANAGER.collectible += 1
+			MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
+			var sum: int = 0
+			for c in MANAGER.coins[MANAGER.world -1].size():
+				sum += MANAGER.coins[MANAGER.world -1][c]
+			if sum == 5:
+				haveCoins = true
 
 
 func _change_color():

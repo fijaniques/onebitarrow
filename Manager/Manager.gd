@@ -26,12 +26,12 @@ export (Script) var saveClass
 
 
 func _ready():
-	$Menu/Menu.play()
 	playingMenu = true
 	_fill_reached()
 	_fill_coins()
+	_fill_special()
 	_load()
-	print(specialList)
+
 
 
 func _play():
@@ -84,6 +84,11 @@ func _fill_coins():
 	for i in coins.size():
 		for c in coins.size():
 			coins[i].append(0)
+
+
+func _fill_special():
+	for i in range(0,6):
+		specialList.append(0)
 
 
 func _save():

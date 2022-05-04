@@ -7,7 +7,12 @@ enum {PLAY, OPTIONS, EXIT}
 
 func _ready():
 	MANAGER.onStage = false
+	MANAGER.get_node("Songs/World5").stop()
 	_set_marker_position()
+
+
+func _process(delta):
+	MANAGER.get_node("Songs/World5Pos").stop()
 
 
 func _input(event):

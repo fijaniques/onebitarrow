@@ -21,7 +21,7 @@ position = Vector2( 8, 40 )
 [node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( 128, 232 )
 
-[node name="Door" parent="Colorizer" index="8"]
+[node name="Door" parent="Colorizer" index="9"]
 position = Vector2( 248, 216 )
 
 [node name="Switch" parent="Colorizer/Switches" index="0" instance=ExtResource( 3 )]

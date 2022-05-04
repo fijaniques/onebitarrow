@@ -12,6 +12,11 @@ func _ready():
 	_get_selection()
 	_get_world()
 	_unlock_check()
+	_special_unlock()
+
+
+func _process(delta):
+	MANAGER.get_node("Songs/World5Pos").stop()
 
 
 func _input(event):
@@ -30,12 +35,14 @@ func _input(event):
 		world -= 1
 		_get_world()
 		_unlock_check()
+		_special_unlock()
 	elif Input.is_action_just_pressed("up") and world < 6:
 		MANAGER.get_node("Menu/ChangeW").play()
 		selected = 1
 		world += 1
 		_get_world()
 		_unlock_check()
+		_special_unlock()
 	_get_selection()
 	if MANAGER.reached[world -1][selected -1]:
 		if Input.is_action_just_pressed("jump"):
@@ -62,6 +69,20 @@ func _get_world():
 			$Selections.get_child(c).set_visible(true)
 
 
+func _special_unlock():
+	if world == 6:
+		if MANAGER.specialList[world -1] == 1:
+			$Selections.get_node("1").get_node("Special").set_visible(true)
+		else:
+			$Selections.get_node("1").get_node("Special").set_visible(false)
+	else:
+		$Selections.get_node("1").get_node("Special").set_visible(false)
+		if MANAGER.specialList[world -1] == 1:
+			$Selections.get_node("6").get_node("Collectible").set_visible(true)
+		else:
+			$Selections.get_node("6").get_node("Collectible").set_visible(false)
+
+
 func _unlock_check():
 	var sum = 0
 	for i in MANAGER.reached[world -1].size():
@@ -71,10 +92,12 @@ func _unlock_check():
 		else:
 			$Selections.get_child(i).get_node("Locker").set_visible(true)
 		
-		if MANAGER.coins[world -1][i] == 1:
-			$Selections.get_child(i).get_node("Collectible").set_visible(true)
-		else:
-			$Selections.get_child(i).get_node("Collectible").set_visible(false)
+		if i < 5:
+			if MANAGER.coins[world -1][i] == 1:
+				$Selections.get_child(i).get_node("Collectible").set_visible(true)
+			else:
+				$Selections.get_child(i).get_node("Collectible").set_visible(false)
+
 	if sum >= 5:
 		$Selections.get_node("6/Locker").set_visible(false)
 		MANAGER.reached[world -1][5] = 1
@@ -107,3 +130,4 @@ func _audio_manager():
 func _set_counters():
 	$Collectibles/Label.text = str(MANAGER.collectible)
 	$DeathCount/Label.text = str(MANAGER.deaths)
+	$Specials/Label.text = str(MANAGER.special)
