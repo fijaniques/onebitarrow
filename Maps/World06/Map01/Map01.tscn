@@ -21,19 +21,22 @@ tile_data = PoolIntArray( 0, 0, 196608, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609
 [node name="Activatable" parent="Colorizer" index="1"]
 tile_data = PoolIntArray( 655362, 0, 196611 )
 
-[node name="Activatable2" parent="Colorizer" index="2"]
+[node name="Activatable2" parent="Colorizer" index="3"]
 tile_data = PoolIntArray( 196610, 0, 196608, 196611, 0, 196610 )
 
-[node name="Traps" parent="Colorizer" index="3"]
+[node name="Traps" parent="Colorizer" index="5"]
 tile_data = PoolIntArray( 131079, 0, 3, 196612, 0, 196608, 196613, 0, 196609, 196614, 0, 196609, 196615, 0, 196611, 196616, 0, 2, 262151, 0, 131072, 262152, 0, 196611, 262153, 0, 196609, 262154, 0, 196610, 327688, 0, 65539, 327694, 0, 0, 327695, 0, 2, 393224, 0, 65539, 393230, 0, 131072, 393231, 0, 131074, 458752, 0, 196608, 458753, 0, 196610, 458755, 0, 0, 458756, 0, 2, 458760, 0, 65539, 458763, 0, 3, 524291, 0, 131072, 524292, 0, 131074, 524295, 0, 196608, 524296, 0, 131078, 524299, 0, 131075, 720897, 0, 0, 720898, 0, 1, 720899, 0, 1, 720900, 0, 1, 720901, 0, 1, 720902, 0, 1, 720903, 0, 1, 720904, 0, 2, 720909, 0, 0, 720910, 0, 1, 720911, 0, 2, 786433, 0, 131072, 786434, 0, 131073, 786435, 0, 131073, 786436, 0, 131073, 786437, 0, 131073, 786438, 0, 131073, 786439, 0, 131073, 786440, 0, 131074, 786445, 0, 131072, 786446, 0, 131073, 786447, 0, 131074, 983042, 0, 196608, 983043, 0, 196609, 983044, 0, 196609, 983045, 0, 196609, 983046, 0, 196609, 983047, 0, 196609, 983048, 0, 196609, 983049, 0, 196609, 983050, 0, 196609, 983051, 0, 196609, 983052, 0, 196609, 983053, 0, 196609, 983054, 0, 196609, 983055, 0, 196610 )
 
-[node name="Character" parent="Colorizer" index="4"]
+[node name="Character" parent="Colorizer" index="6"]
 position = Vector2( 8, 232 )
 
-[node name="Collectible" parent="Colorizer" index="5"]
+[node name="Collectible" parent="Colorizer" index="7"]
+position = Vector2( 283, 152 )
+
+[node name="Special" parent="Colorizer" index="8"]
 position = Vector2( 240, 152 )
 
-[node name="Door" parent="Colorizer" index="6"]
+[node name="Door" parent="Colorizer" index="9"]
 position = Vector2( 248, 40 )
 
 [node name="Gun" parent="Colorizer/Guns" index="0" instance=ExtResource( 2 )]

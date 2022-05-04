@@ -13,9 +13,12 @@ var ready21: bool = false
 var ready26: bool = false
 
 var collectible: int = 0
+var special: int = 0
 var deaths: int = 0
 
+var worlds: int = 6
 var coins = [[], [], [], [], [], []]
+var specialList = []
 var reached = [[], [], [], [], [], []]
 
 #SAVE
@@ -28,6 +31,7 @@ func _ready():
 	_fill_reached()
 	_fill_coins()
 	_load()
+	print(specialList)
 
 
 func _play():
@@ -85,9 +89,11 @@ func _fill_coins():
 func _save():
 	var newSave = saveClass.new()
 	newSave.collectible = collectible
+	newSave.special = special
 	newSave.deaths = deaths
 	newSave.coins = coins
 	newSave.reached = reached
+	newSave.specialList = specialList
 	
 	var dir = Directory.new()
 	var dirPath = "user://ShootPort/Save"
@@ -106,6 +112,8 @@ func _load():
 	var saveState = load(filePath)
 	
 	collectible = saveState.collectible
+	special = saveState.special
 	deaths = saveState.deaths
 	coins = saveState.coins
 	reached = saveState.reached
+	specialList = saveState.specialList

@@ -22,7 +22,6 @@ MANAGER="*res://Manager/Manager.tscn"
 
 window/size/width=256
 window/size/height=256
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

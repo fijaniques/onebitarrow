@@ -8,9 +8,12 @@ var shooting: bool = false
 var bInstance
 
 var pickedCollectible: bool = false
+var pickedSpecial: bool = false
 var haveCoins: bool = false
+var haveSpecial: bool = false
 #export var unlocked: bool = false
 export var lastStage: bool = false
+export var preSix: bool = false
 
 func _ready():
 	_audio_management()
@@ -61,27 +64,44 @@ func _change_scene():
 	var a = int(name.replace("Map", ""))
 	MANAGER.stage = a
 	
-	if pickedCollectible:
-		MANAGER.collectible += 1
-		MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
-		var sum: int = 0
-		for c in MANAGER.coins[MANAGER.world -1].size():
-			sum += MANAGER.coins[MANAGER.world -1][c]
-		if sum == 5:
-			haveCoins = true
 	var nextScene
-	if !lastStage:
-		if haveCoins or MANAGER.stage < 5:
-			nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
+	
+	if !preSix:
+		if pickedSpecial:
+			MANAGER.special += 1
+			MANAGER.specialList.append(1)
+		
+		if pickedCollectible:
+			MANAGER.collectible += 1
+			MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
+			var sum: int = 0
+			for c in MANAGER.coins[MANAGER.world -1].size():
+				sum += MANAGER.coins[MANAGER.world -1][c]
+			if sum == 5:
+				haveCoins = true
+		
+		if !lastStage:
+			if haveCoins or MANAGER.stage < 5:
+				nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
+			else:
+				nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
+				MANAGER.world += 1
+				MANAGER.playing = false
 		else:
-			nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
-			MANAGER.world += 1
-			MANAGER.playing = false
+			nextScene = "res://Menus/Credits/Credits.tscn"
+			for audio in MANAGER.get_node("Songs").get_child_count():
+				MANAGER.get_node("Songs").get_child(audio).stop()
+				MANAGER.playing = false
 	else:
-		nextScene = "res://Menus/Credits/Credits.tscn"
-		for audio in MANAGER.get_node("Songs").get_child_count():
-			MANAGER.get_node("Songs").get_child(audio).stop()
-			MANAGER.playing = false
+		if MANAGER.specialList.size() >= 4:
+			haveSpecial = true
+		if haveSpecial:
+			nextScene = "res://Maps/World05/Map06/Map06.tscn"
+		else:
+			for audio in MANAGER.get_node("Songs").get_child_count():
+				MANAGER.get_node("Songs").get_child(audio).stop()
+				MANAGER.playing = false
+			nextScene = "res://Menus/Credits/Credits.tscn"
 	
 	get_tree().change_scene(nextScene)
 
@@ -104,14 +124,14 @@ func _change_color():
 func _start_scene():
 	if name != "End":
 		MANAGER.stage = int(name.replace("Map0", ""))
-	if !MANAGER.playing:
-		MANAGER._play()
-		MANAGER.playing = true
-	if MANAGER.stage != 6:
-		MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
-	else:
-		MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
-		MANAGER.reached[MANAGER.world][0] = 1
+		if !MANAGER.playing:
+			MANAGER._play()
+			MANAGER.playing = true
+		if MANAGER.stage != 6:
+			MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+		else:
+			MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+			MANAGER.reached[MANAGER.world][0] = 1
 	
 	if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 0:
 		$Colorizer/Collectible.canPick = false
