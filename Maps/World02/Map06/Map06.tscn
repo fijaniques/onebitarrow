@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Maps/Base/BaseMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Barrier/Barrier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Collectible/Special.tscn" type="PackedScene" id=3]
 
 [node name="Map06" instance=ExtResource( 1 )]
 
@@ -17,10 +18,7 @@ position = Vector2( 8, 232 )
 [node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( -32, 120 )
 
-[node name="Special" parent="Colorizer" index="8"]
-position = Vector2( 32, 120 )
-
-[node name="Door" parent="Colorizer" index="9"]
+[node name="Door" parent="Colorizer" index="8"]
 position = Vector2( 248, 232 )
 
 [node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 2 )]
@@ -78,3 +76,6 @@ position = Vector2( 88, 56 )
 
 [node name="Barrier12" parent="Colorizer/Barriers" index="15" instance=ExtResource( 2 )]
 position = Vector2( 88, 72 )
+
+[node name="Special" parent="Colorizer" index="13" instance=ExtResource( 3 )]
+position = Vector2( 40, 120 )

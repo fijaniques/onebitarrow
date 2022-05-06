@@ -50,9 +50,6 @@ func _get_input():
 		
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			_jump()
-		
-		if Input.is_action_just_pressed("restart"):
-			_dying()
 
 
 func _movement():

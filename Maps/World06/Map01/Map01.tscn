@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Maps/Base/BaseMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Gun/Gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Switch/Switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Timer/Timer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Collectible/Special.tscn" type="PackedScene" id=5]
 
 [node name="Map01" instance=ExtResource( 1 )]
 lastStage = true
@@ -33,10 +34,7 @@ position = Vector2( 8, 232 )
 [node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( 283, 152 )
 
-[node name="Special" parent="Colorizer" index="8"]
-position = Vector2( 240, 152 )
-
-[node name="Door" parent="Colorizer" index="9"]
+[node name="Door" parent="Colorizer" index="8"]
 position = Vector2( 248, 40 )
 
 [node name="Gun" parent="Colorizer/Guns" index="0" instance=ExtResource( 2 )]
@@ -57,6 +55,9 @@ rotation = 1.5708
 
 [node name="Switch" parent="Colorizer/Switches" index="0" instance=ExtResource( 3 )]
 timerActive = true
+
+[node name="Special" parent="Colorizer" index="13" instance=ExtResource( 5 )]
+position = Vector2( 240, 152 )
 
 [node name="Timer" parent="Timers" index="0" instance=ExtResource( 4 )]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Maps/Base/BaseMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Collectible/Special.tscn" type="PackedScene" id=2]
 
 [node name="Map06" instance=ExtResource( 1 )]
 
@@ -16,8 +17,8 @@ position = Vector2( 24, 232 )
 [node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( -16, -16 )
 
-[node name="Special" parent="Colorizer" index="8"]
-position = Vector2( 208, 120 )
-
-[node name="Door" parent="Colorizer" index="9"]
+[node name="Door" parent="Colorizer" index="8"]
 position = Vector2( 248, 232 )
+
+[node name="Special" parent="Colorizer" index="13" instance=ExtResource( 2 )]
+position = Vector2( 208, 112 )
