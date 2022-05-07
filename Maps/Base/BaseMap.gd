@@ -24,14 +24,6 @@ func _ready():
 	_change_color()
 
 
-func _input(event):
-#	if Input.is_action_just_pressed("forward"):
-#		$Colorizer/Collectible._picked()
-#		_change_scene()
-	if Input.is_action_just_pressed("back"):
-		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
-
-
 func _shoot(dShot):
 	bInstance = bullet.instance()
 	bInstance.dir = dShot

@@ -25,6 +25,14 @@ func _input(event):
 		visible = pauseState
 	
 	if active:
+		if Input.is_action_just_pressed("back"):
+			selectionPos = 0
+			$Selection.global_position = $Selections.get_child(selectionPos).global_position
+			active = false
+			AudioServer.set_bus_effect_enabled(0,0,false)
+			get_tree().paused = false
+			visible = false
+			
 		if Input.is_action_just_pressed("s") and selectionPos < 3:
 			MANAGER.get_node("Menu/Change").play()
 			selectionPos += 1
