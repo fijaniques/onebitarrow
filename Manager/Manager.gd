@@ -33,17 +33,21 @@ func _ready():
 	_load()
 
 
-
 func _play():
 	if get_tree().current_scene.name != "End":
-		if !playing:
-			if world != 6:
-				$Songs.get_node(str("World", world)).play()
-				$Songs.get_node(str("World", world -1)).stop()
-			else:
-				$Songs.get_node(str("World", world)).play()
-				$Songs/World5Pos.stop()
-			playing = true
+		if !get_tree().current_scene.isSilent:
+			print("NOT SILENT")
+			if !playing:
+				if world != 6:
+					$Songs.get_node(str("World", world)).play()
+					$Songs.get_node(str("World", world -1)).stop()
+				else:
+					$Songs.get_node(str("World", world)).play()
+					$Songs/World5Pos.stop()
+				playing = true
+		else:
+			for song in $Songs.get_child_count():
+				$Songs.get_child(song).stop()
 
 
 func _on_HardIntro_finished():

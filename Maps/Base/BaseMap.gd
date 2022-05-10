@@ -14,6 +14,7 @@ var haveSpecial: bool = false
 #export var unlocked: bool = false
 export var lastStage: bool = false
 export var preSix: bool = false
+export var isSilent: bool = false
 
 func _ready():
 	_audio_management()
@@ -78,6 +79,9 @@ func _change_scene():
 				MANAGER.get_node("Songs").get_child(audio).stop()
 				MANAGER.playing = false
 	else:
+		for audio in MANAGER.get_node("Songs").get_child_count():
+				MANAGER.get_node("Songs").get_child(audio).stop()
+				MANAGER.playing = false
 		_picked_collectible()
 		var sum: int = 0
 		for i in MANAGER.specialList.size():
@@ -88,9 +92,6 @@ func _change_scene():
 		if haveSpecial:
 			nextScene = "res://Maps/World05/Map06/Map06.tscn"
 		else:
-			for audio in MANAGER.get_node("Songs").get_child_count():
-				MANAGER.get_node("Songs").get_child(audio).stop()
-				MANAGER.playing = false
 			nextScene = "res://Menus/Credits/Credits.tscn"
 	
 	get_tree().change_scene(nextScene)

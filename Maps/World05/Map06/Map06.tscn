@@ -3,6 +3,7 @@
 [ext_resource path="res://Maps/Base/BaseMap.tscn" type="PackedScene" id=1]
 
 [node name="Map06" instance=ExtResource( 1 )]
+isSilent = true
 
 [node name="WallOut" parent="." index="1"]
 visible = true
@@ -17,8 +18,5 @@ position = Vector2( 8, 232 )
 [node name="Collectible" parent="Colorizer" index="7"]
 position = Vector2( -64, -8 )
 
-[node name="Special" parent="Colorizer" index="8"]
-position = Vector2( -64, 40 )
-
-[node name="Door" parent="Colorizer" index="9"]
+[node name="Door" parent="Colorizer" index="8"]
 position = Vector2( 248, 232 )
