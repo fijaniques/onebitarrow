@@ -30,7 +30,7 @@ func _input(event):
 			get_tree().quit()
 		else:
 			MANAGER.get_node("Menu/Accept").play()
-			get_tree().change_scene(toScene)
+			_change_scene()
 
 
 func _set_marker_position():
@@ -43,3 +43,12 @@ func _set_marker_position():
 			toScene = "res://Menus/Options/Options.tscn"
 		EXIT:
 			$Marker.position = $Positions/Exit.position
+
+
+func _on_LinkButton_pressed():
+	MANAGER.get_node("Menu/Accept").play()
+	OS.shell_open("https://sites.google.com/view/linasgames")
+
+
+func _change_scene():
+	get_tree().change_scene(toScene)

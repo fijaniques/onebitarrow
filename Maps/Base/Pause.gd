@@ -45,23 +45,7 @@ func _input(event):
 			_set_scene_to()
 		
 		if Input.is_action_just_pressed("jump"):
-			if selectionPos != 3:
-				if selectionPos == 2:
-					AudioServer.set_bus_effect_enabled(0,0,false)
-					MANAGER.get_node("Menu/Accept").play()
-					get_tree().paused = false
-					get_tree().current_scene.get_node("Colorizer/Character")._dying()
-				else:
-					AudioServer.set_bus_effect_enabled(0,0,false)
-					for audio in MANAGER.get_node("Songs").get_child_count():
-						MANAGER.get_node("Songs").get_child(audio).stop()
-					MANAGER.get_node("Menu/Accept").play()
-					MANAGER.get_node("Menu/Menu").play()
-					MANAGER.playingMenu = true
-					get_tree().change_scene(sceneTo)
-					get_tree().paused = false
-			else:
-				get_tree().quit()
+			_change_scene()
 
 
 func _set_scene_to():
@@ -74,3 +58,23 @@ func _set_scene_to():
 			sceneTo = null
 		QUIT:
 			sceneTo = null
+
+
+func _change_scene():
+	if selectionPos != 3:
+		if selectionPos == 2:
+			AudioServer.set_bus_effect_enabled(0,0,false)
+			MANAGER.get_node("Menu/Accept").play()
+			get_tree().paused = false
+			get_tree().current_scene.get_node("Colorizer/Character")._dying()
+		else:
+			AudioServer.set_bus_effect_enabled(0,0,false)
+			for audio in MANAGER.get_node("Songs").get_child_count():
+				MANAGER.get_node("Songs").get_child(audio).stop()
+			MANAGER.get_node("Menu/Accept").play()
+			MANAGER.get_node("Menu/Menu").play()
+			MANAGER.playingMenu = true
+			get_tree().change_scene(sceneTo)
+			get_tree().paused = false
+	else:
+		get_tree().quit()

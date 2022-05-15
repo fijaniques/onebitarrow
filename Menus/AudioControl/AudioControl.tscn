@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/AudioControl/AudioControl.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=3]
@@ -15,6 +15,9 @@ region_rect = Rect2( 0, 0, 240, 12 )
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 3 )
 
 [node name="AudioControl" type="Control"]
 anchor_right = 1.0
@@ -54,4 +57,16 @@ max_value = 0.0
 value = -80.0
 scrollable = false
 
+[node name="Button" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 176.0
+margin_right = 163.0
+margin_bottom = 198.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 5 )
+action_mode = 0
+text = "Accept"
+flat = true
+
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

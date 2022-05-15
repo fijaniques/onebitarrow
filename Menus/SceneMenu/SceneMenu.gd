@@ -44,11 +44,16 @@ func _input(event):
 		_unlock_check()
 		_special_unlock()
 	_get_selection()
+
+	if Input.is_action_just_pressed("jump"):
+		_change_scene()
+
+
+func _change_scene():
 	if MANAGER.reached[world -1][selected -1]:
-		if Input.is_action_just_pressed("jump"):
-			MANAGER.get_node("Menu/Accept").play()
-			var scene = str("res://Maps/World0", world, "/Map0", selected, "/Map0", selected, ".tscn")
-			get_tree().change_scene(scene)
+		MANAGER.get_node("Menu/Accept").play()
+		var scene = str("res://Maps/World0", world, "/Map0", selected, "/Map0", selected, ".tscn")
+		get_tree().change_scene(scene)
 
 
 func _get_selection():
@@ -131,3 +136,28 @@ func _set_counters():
 	$Collectibles/Label.text = str(MANAGER.collectible)
 	$DeathCount/Label.text = str(MANAGER.deaths)
 	$Specials/Label.text = str(MANAGER.special)
+
+
+func _on_Next_pressed():
+	if world < 6:
+		MANAGER.get_node("Menu/ChangeW").play()
+		world += 1
+		selected = 1
+		_get_world()
+		_unlock_check()
+		_special_unlock()
+
+
+func _on_Previous_pressed():
+	if world > 1:
+		MANAGER.get_node("Menu/ChangeW").play()
+		world -= 1
+		selected = 1
+		_get_world()
+		_unlock_check()
+		_special_unlock()
+
+
+func _on_Back_pressed():
+	MANAGER.get_node("Menu/Back").play()
+	get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")

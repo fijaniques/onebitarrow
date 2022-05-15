@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Menus/MainMenu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Sprite/normal_tiles.png" type="Texture" id=2]
 [ext_resource path="res://Sprite/Menus/MainMenu.png" type="Texture" id=3]
 [ext_resource path="res://Sprite/Menus/Marker.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Menus/MainMenu/Positions.gd" type="Script" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=59]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -256,6 +258,12 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
+[sub_resource type="DynamicFont" id=85]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=86]
+font_data = ExtResource( 5 )
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -282,12 +290,71 @@ centered = false
 texture = ExtResource( 4 )
 
 [node name="Positions" type="Node2D" parent="."]
+script = ExtResource( 6 )
 
 [node name="Play" type="Position2D" parent="Positions"]
 position = Vector2( 128, 105 )
 
+[node name="Play" type="Button" parent="Positions/Play"]
+margin_left = -40.0
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = 15.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
 [node name="Options" type="Position2D" parent="Positions"]
 position = Vector2( 128, 137 )
 
+[node name="Options" type="Button" parent="Positions/Options"]
+margin_left = -40.0
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = 15.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
 [node name="Exit" type="Position2D" parent="Positions"]
 position = Vector2( 128, 169 )
+
+[node name="Exit" type="Button" parent="Positions/Exit"]
+margin_left = -40.0
+margin_top = -17.0
+margin_right = 48.0
+margin_bottom = 15.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
+[node name="LinkButton" type="Button" parent="."]
+margin_left = 176.0
+margin_top = 216.0
+margin_right = 255.0
+margin_bottom = 238.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 85 )
+action_mode = 0
+text = "Site"
+flat = true
+
+[node name="LinkButton2" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 216.0
+margin_right = 87.0
+margin_bottom = 238.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 86 )
+action_mode = 0
+text = "Credits"
+flat = true
+
+[connection signal="mouse_entered" from="Positions/Play/Play" to="Positions" method="_on_Play_mouse_entered"]
+[connection signal="pressed" from="Positions/Play/Play" to="Positions" method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="Positions/Options/Options" to="Positions" method="_on_Options_mouse_entered"]
+[connection signal="pressed" from="Positions/Options/Options" to="Positions" method="_on_Options_pressed"]
+[connection signal="mouse_entered" from="Positions/Exit/Exit" to="Positions" method="_on_Exit_mouse_entered"]
+[connection signal="pressed" from="Positions/Exit/Exit" to="Positions" method="_on_Exit_pressed"]
+[connection signal="pressed" from="LinkButton" to="." method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="LinkButton2" to="Positions" method="_on_LinkButton2_pressed"]

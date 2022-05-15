@@ -109,18 +109,21 @@ func _picked_collectible():
 
 
 func _change_color():
-	if MANAGER.world >= 2:
-		$Colorizer.modulate = Color("28b642") #VERDE
-		if MANAGER.world >= 3:
-			$Colorizer.modulate = Color("009dc7") #AZUL
-			if MANAGER.world >= 4:
-				$Colorizer.modulate = Color("cf72c9") #ROSA
-				if MANAGER.world >= 5:
-					$Colorizer.modulate = Color("d02b2b") #VERMELHO
-					if MANAGER.world >= 6:
-						$Colorizer.modulate = Color(0,0,0) #PRETO
+	if name != "End":
+		if MANAGER.world >= 2:
+			$Colorizer.modulate = Color("28b642") #VERDE
+			if MANAGER.world >= 3:
+				$Colorizer.modulate = Color("009dc7") #AZUL
+				if MANAGER.world >= 4:
+					$Colorizer.modulate = Color("cf72c9") #ROSA
+					if MANAGER.world >= 5:
+						$Colorizer.modulate = Color("d02b2b") #VERMELHO
+						if MANAGER.world >= 6:
+							$Colorizer.modulate = Color(0,0,0) #PRETO
+		else:
+			$Colorizer.modulate = Color("996600") #MARROM/LARANJA
 	else:
-		$Colorizer.modulate = Color("996600") #MARROM/LARANJA
+		$Colorizer.modulate = Color(1,1,1) #BRANCO
 
 
 func _start_scene():

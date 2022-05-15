@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Menus/SceneMenu/SceneMenu.gd" type="Script" id=1]
 [ext_resource path="res://Collectible/Collectible.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Sprite/death_skull.png" type="Texture" id=6]
 [ext_resource path="res://Collectible/Special.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/SceneMenu/PositionsScenes.gd" type="Script" id=8]
+[ext_resource path="res://Sprite/arrow.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -19,6 +21,9 @@ font_data = ExtResource( 5 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 5 )
 
 [node name="SceneMenu" type="Control"]
@@ -80,6 +85,7 @@ align = 1
 valign = 1
 
 [node name="Selections" type="Node2D" parent="."]
+script = ExtResource( 8 )
 
 [node name="1" type="Position2D" parent="Selections"]
 position = Vector2( 32, 105 )
@@ -98,6 +104,13 @@ position = Vector2( 23, 22 )
 visible = false
 position = Vector2( 23, 21 )
 
+[node name="1" type="Button" parent="Selections/1"]
+margin_right = 46.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
 [node name="2" type="Position2D" parent="Selections"]
 position = Vector2( 105, 105 )
 
@@ -110,6 +123,13 @@ texture = ExtResource( 4 )
 visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
+
+[node name="2" type="Button" parent="Selections/2"]
+margin_right = 46.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
 
 [node name="3" type="Position2D" parent="Selections"]
 position = Vector2( 178, 105 )
@@ -124,6 +144,13 @@ visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 
+[node name="3" type="Button" parent="Selections/3"]
+margin_right = 46.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
 [node name="4" type="Position2D" parent="Selections"]
 position = Vector2( 32, 178 )
 
@@ -136,6 +163,13 @@ texture = ExtResource( 4 )
 visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
+
+[node name="4" type="Button" parent="Selections/4"]
+margin_right = 46.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
 
 [node name="5" type="Position2D" parent="Selections"]
 position = Vector2( 105, 178 )
@@ -150,6 +184,13 @@ visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 23, 22 )
 
+[node name="5" type="Button" parent="Selections/5"]
+margin_right = 46.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
 [node name="6" type="Position2D" parent="Selections"]
 position = Vector2( 178, 178 )
 
@@ -160,6 +201,13 @@ texture = ExtResource( 4 )
 
 [node name="Collectible" parent="Selections/6" instance=ExtResource( 7 )]
 position = Vector2( 23, 22 )
+
+[node name="6" type="Button" parent="Selections/6"]
+margin_right = 46.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
 
 [node name="Selection" type="Sprite" parent="."]
 texture = ExtResource( 3 )
@@ -213,3 +261,56 @@ margin_bottom = 58.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0"
+
+[node name="Next" type="Button" parent="."]
+margin_left = 144.0
+margin_top = 32.0
+margin_right = 160.0
+margin_bottom = 52.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
+[node name="Sprite" type="Sprite" parent="Next"]
+position = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+
+[node name="Previous" type="Button" parent="."]
+margin_left = 88.0
+margin_top = 32.0
+margin_right = 104.0
+margin_bottom = 52.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
+[node name="Sprite" type="Sprite" parent="Previous"]
+position = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="Back" type="Button" parent="."]
+margin_top = 232.0
+margin_right = 52.0
+margin_bottom = 254.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 5 )
+action_mode = 0
+text = "Back"
+flat = true
+
+[connection signal="mouse_entered" from="Selections/1/1" to="Selections" method="_on_1_mouse_entered"]
+[connection signal="pressed" from="Selections/1/1" to="Selections" method="_on_1_pressed"]
+[connection signal="mouse_entered" from="Selections/2/2" to="Selections" method="_on_2_mouse_entered"]
+[connection signal="pressed" from="Selections/2/2" to="Selections" method="_on_2_pressed"]
+[connection signal="mouse_entered" from="Selections/3/3" to="Selections" method="_on_3_mouse_entered"]
+[connection signal="pressed" from="Selections/3/3" to="Selections" method="_on_3_pressed"]
+[connection signal="mouse_entered" from="Selections/4/4" to="Selections" method="_on_4_mouse_entered"]
+[connection signal="pressed" from="Selections/4/4" to="Selections" method="_on_4_pressed"]
+[connection signal="mouse_entered" from="Selections/5/5" to="Selections" method="_on_5_mouse_entered"]
+[connection signal="pressed" from="Selections/5/5" to="Selections" method="_on_5_pressed"]
+[connection signal="mouse_entered" from="Selections/6/6" to="Selections" method="_on_6_mouse_entered"]
+[connection signal="pressed" from="Selections/6/6" to="Selections" method="_on_6_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Previous" to="." method="_on_Previous_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

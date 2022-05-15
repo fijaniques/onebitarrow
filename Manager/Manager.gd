@@ -36,7 +36,6 @@ func _ready():
 func _play():
 	if get_tree().current_scene.name != "End":
 		if !get_tree().current_scene.isSilent:
-			print("NOT SILENT")
 			if !playing:
 				if world != 6:
 					$Songs.get_node(str("World", world)).play()
