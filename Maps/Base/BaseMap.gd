@@ -7,24 +7,22 @@ var bullet = preload("res://Bullet/Bullet.tscn")
 var shooting: bool = false
 var bInstance
 
-var collectible: bool = false
+var pickedCollectible: bool = false
+var pickedSpecial: bool = false
 var haveCoins: bool = false
-export var unlocked: bool = false
+var haveSpecial: bool = false
+#export var unlocked: bool = false
+export var lastStage: bool = false
+export var preSix: bool = false
+export var isSilent: bool = false
 
 func _ready():
+	_audio_management()
 	_get_world()
 	_start_scene()
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
 	$Colorizer/Character.connect("teleport", self, "_teleport")
 	_change_color()
-
-
-func _input(event):
-	if Input.is_action_just_pressed("forward"):
-		_change_scene()
-		$Colorizer/Collectible._picked()
-	elif Input.is_action_just_pressed("to_menu"):
-		get_tree().change_scene("res://Menus/SceneMenu/SceneMenu.tscn")
 
 
 func _shoot(dShot):
@@ -54,63 +52,100 @@ func _get_world():
 
 
 func _change_scene():
+	if get_tree().current_scene.name == "End":
+		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
 	var a = int(name.replace("Map", ""))
 	MANAGER.stage = a
-	if collectible:
-		MANAGER.collectible += 1
-		if MANAGER.world == 1:
-			MANAGER.c1.append("collectible")
-			if MANAGER.c1.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 2:
-			MANAGER.c2.append("collectible")
-			if MANAGER.c2.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 3:
-			MANAGER.c3.append("collectible")
-			if MANAGER.c3.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 4:
-			MANAGER.c4.append("collectible")
-			if MANAGER.c4.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 5:
-			MANAGER.c5.append("collectible")
-			if MANAGER.c5.size() == 5:
-				haveCoins = true
-		elif MANAGER.world == 6:
-			MANAGER.c6.append("collectible")
-			if MANAGER.c6.size() == 5:
-				haveCoins = true
+	
 	var nextScene
-	if haveCoins or MANAGER.stage < 5:
-		nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
+	
+	if !preSix:
+		if pickedSpecial:
+			MANAGER.special += 1
+			MANAGER.specialList[MANAGER.world -1] = 1
+		
+		_picked_collectible()
+		
+		if !lastStage:
+			if haveCoins or MANAGER.stage < 5:
+				nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
+			else:
+				nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
+				MANAGER.world += 1
+				MANAGER.playing = false
+		else:
+			nextScene = "res://Menus/Credits/Credits.tscn"
+			for audio in MANAGER.get_node("Songs").get_child_count():
+				MANAGER.get_node("Songs").get_child(audio).stop()
+				MANAGER.playing = false
 	else:
-		nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
-		MANAGER.world += 1
-		MANAGER.playing = false
+		for audio in MANAGER.get_node("Songs").get_child_count():
+				MANAGER.get_node("Songs").get_child(audio).stop()
+				MANAGER.playing = false
+		_picked_collectible()
+		var sum: int = 0
+		for i in MANAGER.specialList.size():
+			sum += MANAGER.specialList[i]
+			
+		if sum >= 4:
+			haveSpecial = true
+		if haveSpecial:
+			nextScene = "res://Maps/World05/Map06/Map06.tscn"
+		else:
+			nextScene = "res://Menus/Credits/Credits.tscn"
 	
 	get_tree().change_scene(nextScene)
-	_change_color()
+
+
+func _picked_collectible():
+	if pickedCollectible:
+			MANAGER.collectible += 1
+			MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
+			var sum: int = 0
+			for c in MANAGER.coins[MANAGER.world -1].size():
+				sum += MANAGER.coins[MANAGER.world -1][c]
+			if sum == 5:
+				haveCoins = true
 
 
 func _change_color():
-	if MANAGER.world >= 2:
-		$Colorizer.modulate = Color("28b642") #VERDE
-		if MANAGER.world >= 3:
-			$Colorizer.modulate = Color("009dc7") #AZUL
-			if MANAGER.world >= 4:
-				$Colorizer.modulate = Color("cf72c9") #ROSA
-				if MANAGER.world >= 5:
-					$Colorizer.modulate = Color("d02b2b") #VERMELHO
-					if MANAGER.world >= 6:
-						$Colorizer.modulate = Color(0,0,0) #PRETO
+	if name != "End":
+		if MANAGER.world >= 2:
+			$Colorizer.modulate = Color("28b642") #VERDE
+			if MANAGER.world >= 3:
+				$Colorizer.modulate = Color("009dc7") #AZUL
+				if MANAGER.world >= 4:
+					$Colorizer.modulate = Color("cf72c9") #ROSA
+					if MANAGER.world >= 5:
+						$Colorizer.modulate = Color("d02b2b") #VERMELHO
+						if MANAGER.world >= 6:
+							$Colorizer.modulate = Color(0,0,0) #PRETO
+		else:
+			$Colorizer.modulate = Color("996600") #MARROM/LARANJA
 	else:
-		$Colorizer.modulate = Color("996600") #MARROM/LARANJA
+		$Colorizer.modulate = Color(1,1,1) #BRANCO
 
 
 func _start_scene():
-	var a = name.replace("Map0", "")
-	var b = int(a)
-	MANAGER.stage = b
-	MANAGER._play()
+	if name != "End":
+		MANAGER.stage = int(name.replace("Map0", ""))
+		if !MANAGER.playing:
+			MANAGER._play()
+			MANAGER.playing = true
+		if MANAGER.stage != 6:
+			MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+		else:
+			MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
+			MANAGER.reached[MANAGER.world][0] = 1
+	
+	if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 0:
+		$Colorizer/Collectible.canPick = false
+		$Colorizer/Collectible.visible = false
+	
+	MANAGER._save()
+
+
+func _audio_management():
+	MANAGER.onStage = true
+	MANAGER.get_node("Menu/Menu").stop()
+	MANAGER.playingMenu = false

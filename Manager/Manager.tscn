@@ -1,39 +1,81 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Manager/Manager.gd" type="Script" id=1]
-[ext_resource path="res://Sounds/music.ogg" type="AudioStream" id=2]
-[ext_resource path="res://Sounds/hard_song_intro.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/hard_song.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/final_song_intro.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/final_song.ogg" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/World03.ogg" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/World02.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Songs/World01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Songs/World02.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Songs/World03.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Songs/World05Intro.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Songs/World05.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Songs/World06Intro.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Songs/World06.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Songs/Credits.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Songs/PreCredits.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Songs/World4.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Songs/Menu.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Menu/change.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/Menu/accept.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/Menu/back.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Scripts/game_save.gd" type="Script" id=16]
+[ext_resource path="res://Sounds/step.ogg" type="AudioStream" id=17]
 
 [node name="Manager" type="Node2D"]
 script = ExtResource( 1 )
+saveClass = ExtResource( 16 )
 
-[node name="World1" type="AudioStreamPlayer" parent="."]
+[node name="Songs" type="Node2D" parent="."]
+pause_mode = 2
+
+[node name="World1" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource( 2 )
 
-[node name="World2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-
-[node name="FinalIntro" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-
-[node name="Final" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-
-[node name="World3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-
-[node name="World4" type="AudioStreamPlayer" parent="."]
-
-[node name="World5Intro" type="AudioStreamPlayer" parent="."]
+[node name="World2" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource( 3 )
 
-[node name="World5" type="AudioStreamPlayer" parent="."]
+[node name="World3" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource( 4 )
 
-[connection signal="finished" from="FinalIntro" to="." method="_on_FinalIntro_finished"]
-[connection signal="finished" from="World5Intro" to="." method="_on_HardIntro_finished"]
+[node name="World4" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 11 )
+
+[node name="World5" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 5 )
+
+[node name="World5Pos" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 6 )
+
+[node name="World6" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 7 )
+
+[node name="World6Pos" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 8 )
+
+[node name="World0" type="AudioStreamPlayer" parent="Songs"]
+
+[node name="PreCredit" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 10 )
+
+[node name="Credit" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource( 9 )
+
+[node name="Menu" type="Node2D" parent="."]
+pause_mode = 2
+
+[node name="Menu" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 12 )
+
+[node name="Change" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 13 )
+
+[node name="Accept" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 14 )
+
+[node name="Back" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 15 )
+
+[node name="ChangeW" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 17 )
+volume_db = 8.0
+
+[connection signal="finished" from="Songs/World5" to="." method="_on_World5_finished"]
+[connection signal="finished" from="Songs/World6" to="." method="_on_World6_finished"]
+[connection signal="finished" from="Songs/PreCredit" to="." method="_on_PreCredit_finished"]

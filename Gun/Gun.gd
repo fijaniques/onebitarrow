@@ -9,6 +9,7 @@ func _ready():
 
 
 func _shoot():
+	$Shoot.play()
 	var bInstance = bullet.instance()
 	bInstance.dir = direction
 	bInstance.global_position = global_position

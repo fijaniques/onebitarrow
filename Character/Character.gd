@@ -50,9 +50,6 @@ func _get_input():
 		
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			_jump()
-		
-		if Input.is_action_just_pressed("restart"):
-			_dying()
 
 
 func _movement():
@@ -110,6 +107,8 @@ func _dying():
 
 func _dead():
 # warning-ignore:return_value_discarded
+	MANAGER.deaths += 1
+	MANAGER._save()
 	get_tree().reload_current_scene()
 
 
