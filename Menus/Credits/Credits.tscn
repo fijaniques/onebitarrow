@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprite/Credits/Credits.png" type="Texture" id=1]
+[ext_resource path="res://Sprite/Credits/Testers.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Minecraft.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Menus/Credits/Credits.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Text" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Testers" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Special" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -118.0
+margin_bottom = -102.0
+custom_fonts/font = SubResource( 2 )
+text = "Special thanks to"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Names" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -87.0
+margin_bottom = -61.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+uppercase = true
+
+[node name="AddInfo" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -53.0
+margin_bottom = -3.0
+custom_fonts/font = SubResource( 2 )
+text = "(helped a lot with coding)"
+align = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.025
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
