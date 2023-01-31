@@ -41,15 +41,16 @@ func _get_input():
 			hDir = 1
 		elif hDir < 0:
 			hDir = -1
-		
-		if Input.is_action_just_pressed("shoot"):
-			if !shooting and canShoot:
-				_shoot()
-			elif shooting and !canShoot:
-				_teleport()
-		
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			_jump()
+
+
+	if Input.is_action_just_pressed("shoot"):
+		if !shooting and canShoot:
+			_shoot()
+		elif shooting and !canShoot:
+			_teleport()
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		_jump()
 
 
 func _movement():
@@ -101,6 +102,7 @@ func _trap_collision():
 func _dying():
 	$Audio/Death.play()
 	canMove = false
+	canShoot = false
 	dead = true
 	animation.play("Dead")
 

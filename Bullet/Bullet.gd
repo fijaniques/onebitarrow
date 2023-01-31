@@ -5,8 +5,10 @@ var flipped = false
 var dir = Vector2.ZERO
 var speed: float = 200
 var velocity = Vector2.ZERO
+var initialColor = Vector3()
 
 func _ready():
+	initialColor = modulate
 	$Collision.disabled = false
 	$Position2D.visible = true
 	_animation()
@@ -48,10 +50,22 @@ func _collision_handler():
 			$Arrow.play()
 		dir = Vector2.ZERO
 		get_tree().current_scene.get_node("Colorizer").get_node("Character").shooting = false
+		get_tree().current_scene.shooting = false
+		get_tree().current_scene.get_node("Colorizer").get_node("Character").canShoot = true
 		animation.play("Free")
 
 
 func _reset():
+	get_tree().current_scene.get_node("Colorizer").get_node("Character").shooting = false
 	get_tree().current_scene.shooting = false
 	get_tree().current_scene.get_node("Colorizer").get_node("Character").canShoot = true
 	queue_free()
+
+
+func _on_ColorChanger_body_entered(body):
+	if body.is_in_group("Traps"):
+		modulate = Color(0.18,0.18,0.18)
+
+
+func _on_ColorChanger_body_exited(body):
+	modulate = initialColor

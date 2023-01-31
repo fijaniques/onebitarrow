@@ -1,70 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Maps/Base/BaseMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Switch/Switch.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Barrier/Barrier.tscn" type="PackedScene" id=3]
 
 [node name="Map03" instance=ExtResource( 1 )]
 
 [node name="Walls" parent="Colorizer" index="0"]
-tile_data = PoolIntArray( 0, 0, 3, 2, 0, 196608, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 196609, 7, 0, 196609, 8, 0, 196609, 9, 0, 5, 10, 0, 196609, 11, 0, 196609, 12, 0, 196609, 13, 0, 196609, 14, 0, 196609, 15, 0, 6, 65536, 0, 65539, 65545, 0, 65539, 65551, 0, 65539, 131072, 0, 65540, 131073, 0, 196609, 131074, 0, 196610, 131081, 0, 65539, 131087, 0, 65539, 196608, 0, 65539, 196617, 0, 65539, 196623, 0, 65539, 262144, 0, 65539, 262153, 0, 65539, 262159, 0, 65539, 327680, 0, 65539, 327689, 0, 65539, 327695, 0, 65539, 393216, 0, 65539, 393225, 0, 65539, 393231, 0, 65539, 458752, 0, 65539, 458761, 0, 131075, 458767, 0, 65539, 524288, 0, 65539, 524300, 0, 3, 524303, 0, 65539, 589824, 0, 65540, 589825, 0, 196609, 589826, 0, 196609, 589827, 0, 196609, 589828, 0, 196609, 589829, 0, 196609, 589830, 0, 196609, 589831, 0, 196609, 589832, 0, 196610, 589836, 0, 65539, 589839, 0, 65539, 655360, 0, 65539, 655372, 0, 65539, 655375, 0, 65539, 720896, 0, 65539, 720908, 0, 65539, 720911, 0, 65539, 786432, 0, 65539, 786440, 0, 196611, 786444, 0, 65539, 786447, 0, 65539, 851968, 0, 65539, 851980, 0, 131075, 851983, 0, 131075, 917504, 0, 65539, 983040, 0, 131076, 983041, 0, 196609, 983042, 0, 196609, 983043, 0, 196609, 983044, 0, 196609, 983045, 0, 196609, 983046, 0, 196609, 983047, 0, 196609, 983048, 0, 196609, 983049, 0, 196609, 983050, 0, 196609, 983051, 0, 196609, 983052, 0, 196609, 983053, 0, 196609, 983054, 0, 196609, 983055, 0, 196610 )
-
-[node name="Activatable" parent="Colorizer" index="1"]
-tile_data = PoolIntArray( 655365, 0, 3, 720901, 0, 65539, 786437, 0, 131076, 786438, 0, 196609, 786439, 0, 196610, 917516, 0, 196611 )
-
-[node name="Points" parent="Colorizer" index="2"]
-tile_data = PoolIntArray( 655365, 0, 3, 720901, 0, 65539, 786437, 0, 131076, 786438, 0, 196609, 786439, 0, 196610, 917516, 0, 196611 )
+tile_data = PoolIntArray( 0, 0, 3, 2, 0, 196608, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 6, 65536, 0, 65539, 65542, 0, 65539, 131072, 0, 131076, 131073, 0, 196609, 131074, 0, 6, 131078, 0, 131076, 131079, 0, 196609, 131080, 0, 196609, 131081, 0, 196609, 131082, 0, 196609, 131083, 0, 196609, 131084, 0, 196609, 131085, 0, 196609, 131086, 0, 196609, 131087, 0, 6, 196610, 0, 65539, 196623, 0, 65539, 262146, 0, 65539, 262159, 0, 65539, 327682, 0, 65539, 327695, 0, 65539, 393218, 0, 65539, 393231, 0, 65539, 458754, 0, 65539, 458767, 0, 65539, 524290, 0, 65540, 524291, 0, 196609, 524292, 0, 196609, 524293, 0, 196609, 524294, 0, 196609, 524295, 0, 196609, 524296, 0, 196609, 524297, 0, 196610, 524303, 0, 65539, 589826, 0, 65539, 589839, 0, 65539, 655362, 0, 65539, 655375, 0, 65539, 720898, 0, 65539, 720911, 0, 65539, 786434, 0, 65539, 786447, 0, 65539, 851970, 0, 65539, 851983, 0, 131075, 917506, 0, 65539, 983042, 0, 131076, 983043, 0, 196609, 983044, 0, 196609, 983045, 0, 196609, 983046, 0, 196609, 983047, 0, 196609, 983048, 0, 196609, 983049, 0, 196609, 983050, 0, 196609, 983051, 0, 196609, 983052, 0, 196609, 983053, 0, 196609, 983054, 0, 196609, 983055, 0, 196610 )
 
 [node name="Activatable2" parent="Colorizer" index="3"]
-tile_data = PoolIntArray( 655369, 0, 3, 720905, 0, 131075, 851969, 0, 196608, 851970, 0, 196609, 851971, 0, 196609, 851972, 0, 196609, 851973, 0, 196609, 851974, 0, 196609, 851975, 0, 196609, 851976, 0, 196610 )
+tile_data = PoolIntArray( 851974, 0, 196608, 851975, 0, 196610 )
 
 [node name="Points2" parent="Colorizer" index="4"]
-tile_data = PoolIntArray( 655369, 0, 3, 720905, 0, 131075, 851969, 0, 196608, 851970, 0, 196609, 851971, 0, 196609, 851972, 0, 196609, 851973, 0, 196609, 851974, 0, 196609, 851975, 0, 196609, 851976, 0, 196610 )
+tile_data = PoolIntArray( 851974, 0, 196608, 851975, 0, 196610 )
 
 [node name="Traps" parent="Colorizer" index="5"]
-tile_data = PoolIntArray( 458764, 0, 196608, 458765, 0, 196609, 458766, 0, 196610, 655373, 0, 196608, 655374, 0, 196610, 851981, 0, 196608, 851982, 0, 196610, 917505, 0, 196608, 917506, 0, 196609, 917507, 0, 196609, 917508, 0, 196609, 917509, 0, 196609, 917510, 0, 196609, 917511, 0, 196609, 917512, 0, 196610 )
+tile_data = PoolIntArray( 196618, 0, 3, 262154, 0, 65539, 327690, 0, 65539, 393226, 0, 65539, 458762, 0, 65539, 524298, 0, 65540, 524299, 0, 196609, 524300, 0, 196609, 524301, 0, 196609, 524302, 0, 196610, 589834, 0, 65539, 655370, 0, 65539, 720906, 0, 65539, 786442, 0, 65539, 851978, 0, 65539, 917507, 0, 196608, 917508, 0, 196609, 917509, 0, 196609, 917510, 0, 196609, 917511, 0, 196609, 917512, 0, 196609, 917513, 0, 196609, 917514, 0, 131078 )
 
 [node name="Character" parent="Colorizer" index="6"]
 position = Vector2( 24, 24 )
 
 [node name="Collectible" parent="Colorizer" index="7"]
-position = Vector2( 24, 168 )
+position = Vector2( 104, 186 )
 
-[node name="Switch" parent="Colorizer" index="8" instance=ExtResource( 2 )]
-position = Vector2( 224, 192 )
+[node name="Switch2" parent="Colorizer" index="8" instance=ExtResource( 2 )]
+position = Vector2( 56, 200 )
 
-[node name="Switch2" parent="Colorizer" index="9" instance=ExtResource( 2 )]
-position = Vector2( 24, 200 )
-
-[node name="Door" parent="Colorizer" index="10"]
+[node name="Door" parent="Colorizer" index="9"]
 position = Vector2( 248, 232 )
-
-[node name="Barrier9" parent="Colorizer/Barriers" index="0" instance=ExtResource( 3 )]
-position = Vector2( 152, 152 )
-rotation = 1.5708
-
-[node name="Barrier10" parent="Colorizer/Barriers" index="1" instance=ExtResource( 3 )]
-position = Vector2( 168, 152 )
-rotation = 1.5708
-
-[node name="Barrier11" parent="Colorizer/Barriers" index="2" instance=ExtResource( 3 )]
-position = Vector2( 184, 152 )
-rotation = 1.5708
-
-[node name="Barrier12" parent="Colorizer/Barriers" index="3" instance=ExtResource( 3 )]
-position = Vector2( 200, 104 )
-
-[node name="Barrier13" parent="Colorizer/Barriers" index="4" instance=ExtResource( 3 )]
-position = Vector2( 200, 88 )
-
-[node name="Barrier14" parent="Colorizer/Barriers" index="5" instance=ExtResource( 3 )]
-position = Vector2( 200, 72 )
-
-[node name="Barrier15" parent="Colorizer/Barriers" index="6" instance=ExtResource( 3 )]
-position = Vector2( 200, 56 )
-
-[node name="Barrier16" parent="Colorizer/Barriers" index="7" instance=ExtResource( 3 )]
-position = Vector2( 200, 40 )
-
-[node name="Barrier17" parent="Colorizer/Barriers" index="8" instance=ExtResource( 3 )]
-position = Vector2( 200, 25 )

@@ -6,50 +6,36 @@
 [node name="Map01" instance=ExtResource( 1 )]
 
 [node name="Walls" parent="Colorizer" index="0"]
-tile_data = PoolIntArray( 0, 0, 3, 2, 0, 196608, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 196609, 7, 0, 196609, 8, 0, 196609, 9, 0, 196609, 10, 0, 196609, 11, 0, 196609, 12, 0, 196609, 13, 0, 196609, 14, 0, 196609, 15, 0, 6, 65536, 0, 65539, 65551, 0, 65539, 131072, 0, 196611, 131073, 0, 2, 131087, 0, 131075, 196608, 0, 65536, 196609, 0, 196611, 196610, 0, 2, 262144, 0, 131072, 262145, 0, 131073, 262146, 0, 196611, 262147, 0, 196609, 262148, 0, 5, 262149, 0, 196609, 262150, 0, 196610, 262153, 0, 196608, 262154, 0, 196609, 262155, 0, 5, 262156, 0, 196609, 262157, 0, 196609, 262158, 0, 196609, 262159, 0, 196610, 327684, 0, 65539, 327691, 0, 65539, 393220, 0, 65539, 393227, 0, 65539, 458756, 0, 65539, 458763, 0, 65539, 524292, 0, 65540, 524293, 0, 196609, 524294, 0, 196610, 524297, 0, 196608, 524298, 0, 196609, 524299, 0, 65542, 589828, 0, 65539, 589835, 0, 65539, 655364, 0, 65539, 655371, 0, 65539, 720900, 0, 65539, 720907, 0, 65539, 786436, 0, 65539, 786443, 0, 65539, 851972, 0, 65539, 851979, 0, 65539, 917508, 0, 65539, 917515, 0, 65539, 983044, 0, 131076, 983045, 0, 196609, 983046, 0, 196609, 983047, 0, 196609, 983048, 0, 196609, 983049, 0, 196609, 983050, 0, 196609, 983051, 0, 131078 )
+tile_data = PoolIntArray( 655360, 0, 4, 655361, 0, 196609, 655362, 0, 196609, 655363, 0, 196609, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196609, 655374, 0, 196609, 655375, 0, 6, 720896, 0, 65539, 720911, 0, 65539, 786432, 0, 65539, 786447, 0, 65539, 851968, 0, 131075, 851983, 0, 131075, 983040, 0, 196608, 983041, 0, 196609, 983042, 0, 196609, 983043, 0, 196609, 983044, 0, 196609, 983045, 0, 196609, 983046, 0, 196609, 983047, 0, 196609, 983048, 0, 196609, 983049, 0, 196609, 983050, 0, 196609, 983051, 0, 196609, 983052, 0, 196609, 983053, 0, 196609, 983054, 0, 196609, 983055, 0, 196610 )
 
-[node name="Traps" parent="Colorizer" index="3"]
-tile_data = PoolIntArray( 65540, 0, 3, 131076, 0, 65539, 196612, 0, 131075, 917509, 0, 196608, 917510, 0, 196609, 917511, 0, 196609, 917512, 0, 196609, 917513, 0, 196609, 917514, 0, 196610 )
+[node name="Traps" parent="Colorizer" index="5"]
+tile_data = PoolIntArray( 720903, 0, 0, 720904, 0, 2, 786439, 0, 65536, 786440, 0, 65538, 851975, 0, 65536, 851976, 0, 65538, 917511, 0, 131072, 917512, 0, 131074 )
 
-[node name="Character" parent="Colorizer" index="4"]
-position = Vector2( 248, 56 )
-flipped = true
+[node name="Character" parent="Colorizer" index="6"]
+position = Vector2( 8, 233 )
 
-[node name="Collectible" parent="Colorizer" index="5"]
-position = Vector2( 128, 168 )
+[node name="Collectible" parent="Colorizer" index="7"]
+position = Vector2( 168, 208 )
 
-[node name="Door" parent="Colorizer" index="6"]
-position = Vector2( 24, 8 )
+[node name="Door" parent="Colorizer" index="8"]
+position = Vector2( 248, 232 )
 
-[node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 2 )]
-position = Vector2( 104, 56 )
-
-[node name="Barrier2" parent="Colorizer/Barriers" index="1" instance=ExtResource( 2 )]
-position = Vector2( 104, 40 )
-
-[node name="Barrier3" parent="Colorizer/Barriers" index="2" instance=ExtResource( 2 )]
-position = Vector2( 104, 24 )
-
-[node name="Barrier4" parent="Colorizer/Barriers" index="3" instance=ExtResource( 2 )]
-position = Vector2( 88, 152 )
+[node name="Barrier9" parent="Colorizer/Barriers" index="0" instance=ExtResource( 2 )]
+position = Vector2( 104, 232 )
 rotation = 1.5708
 
-[node name="Barrier5" parent="Colorizer/Barriers" index="4" instance=ExtResource( 2 )]
-position = Vector2( 104, 152 )
+[node name="Barrier10" parent="Colorizer/Barriers" index="1" instance=ExtResource( 2 )]
+position = Vector2( 200, 232 )
 rotation = 1.5708
 
-[node name="Barrier6" parent="Colorizer/Barriers" index="5" instance=ExtResource( 2 )]
-position = Vector2( 120, 152 )
+[node name="Barrier11" parent="Colorizer/Barriers" index="2" instance=ExtResource( 2 )]
+position = Vector2( 200, 216 )
 rotation = 1.5708
 
-[node name="Barrier7" parent="Colorizer/Barriers" index="6" instance=ExtResource( 2 )]
-position = Vector2( 136, 152 )
+[node name="Barrier12" parent="Colorizer/Barriers" index="3" instance=ExtResource( 2 )]
+position = Vector2( 200, 200 )
 rotation = 1.5708
 
-[node name="Barrier8" parent="Colorizer/Barriers" index="7" instance=ExtResource( 2 )]
-position = Vector2( 152, 152 )
-rotation = 1.5708
-
-[node name="Barrier9" parent="Colorizer/Barriers" index="8" instance=ExtResource( 2 )]
-position = Vector2( 168, 152 )
+[node name="Barrier13" parent="Colorizer/Barriers" index="4" instance=ExtResource( 2 )]
+position = Vector2( 200, 184 )
 rotation = 1.5708
