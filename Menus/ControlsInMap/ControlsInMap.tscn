@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menus/ControlsInMap/Controls Timer.gd" type="Script" id=1]
+[ext_resource path="res://Sprite/Menus/controls_2.png" type="Texture" id=2]
+[ext_resource path="res://Sprite/Menus/controls_1.png" type="Texture" id=3]
+
+[node name="Controls" type="Node2D"]
+
+[node name="Controls1" type="Sprite" parent="."]
+position = Vector2( 0, -24 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Controls2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -24 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Controls Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 1 )
+
+[node name="Cover" type="Node2D" parent="."]
+
+[node name="BG" type="ColorRect" parent="Cover"]
+anchor_left = -0.184
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 45.0
+margin_right = 256.0
+margin_bottom = 211.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="BG2" type="ColorRect" parent="Cover"]
+anchor_left = -0.184
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -163.0
+margin_right = 256.0
+margin_bottom = 3.0
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[connection signal="timeout" from="Controls Timer" to="Controls Timer" method="_on_Controls_Timer_timeout"]

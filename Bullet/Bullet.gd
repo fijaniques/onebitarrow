@@ -6,9 +6,11 @@ var dir = Vector2.ZERO
 var speed: float = 200
 var velocity = Vector2.ZERO
 var initialColor = Vector3()
+var invertedColor = Vector3()
 
 func _ready():
 	initialColor = modulate
+	invertedColor = get_tree().current_scene.get_node("BG").modulate
 	$Collision.disabled = false
 	$Position2D.visible = true
 	_animation()

@@ -34,6 +34,24 @@ position = Vector2( 96, 56 )
 [node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 2 )]
 position = Vector2( 72, 56 )
 
+[node name="Barrier2" parent="Colorizer/Barriers" index="1" instance=ExtResource( 2 )]
+position = Vector2( 24, 88 )
+
+[node name="Barrier3" parent="Colorizer/Barriers" index="2" instance=ExtResource( 2 )]
+position = Vector2( 24, 104 )
+
+[node name="Barrier4" parent="Colorizer/Barriers" index="3" instance=ExtResource( 2 )]
+position = Vector2( 24, 120 )
+
+[node name="Barrier5" parent="Colorizer/Barriers" index="4" instance=ExtResource( 2 )]
+position = Vector2( 40, 88 )
+
+[node name="Barrier6" parent="Colorizer/Barriers" index="5" instance=ExtResource( 2 )]
+position = Vector2( 40, 104 )
+
+[node name="Barrier7" parent="Colorizer/Barriers" index="6" instance=ExtResource( 2 )]
+position = Vector2( 40, 120 )
+
 [node name="Rebound" parent="Colorizer/Rebound" index="0" instance=ExtResource( 3 )]
 position = Vector2( 200, 56 )
 rotation = -1.5708
