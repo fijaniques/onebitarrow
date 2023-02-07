@@ -104,7 +104,7 @@ func _save():
 	newSave.specialList = specialList
 	
 	var dir = Directory.new()
-	var dirPath = "./ShootPort/Save"
+	var dirPath = "user://Save/"
 	if !dir.dir_exists(dirPath):
 		dir.make_dir_recursive(dirPath)
 	
@@ -113,7 +113,7 @@ func _save():
 
 func _load():
 	var dir = Directory.new()
-	var filePath = "./ShootPort/Save/save_file.tres"
+	var filePath = "user://Save/save_file.tres"
 	if !dir.file_exists(filePath):
 		return false
 	
