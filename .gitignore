@@ -2,7 +2,7 @@
 .import/
 export.cfg
 export_presets.cfg
-ShootPort/
+Save/
 
 # Imported translations (automatically generated from CSV files)
 *.translation

@@ -101,6 +101,7 @@ func _trap_collision():
 
 func _dying():
 	$Audio/Death.play()
+	$Collision.set_deferred("disabled", true)
 	canMove = false
 	canShoot = false
 	dead = true
