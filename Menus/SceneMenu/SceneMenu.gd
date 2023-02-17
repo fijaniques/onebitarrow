@@ -63,7 +63,7 @@ func _input(event):
 func _change_scene():
 	if MANAGER.reached[world -1][selected -1]:
 		MANAGER.get_node("Menu/Accept").play()
-		var scene = str("res://Maps/World0", world, "/Map0", selected, "/Map0", selected, ".tscn")
+		var scene = str("res://Maps/World0", world, "/Map0", selected, ".tscn")
 		get_tree().change_scene(scene)
 
 

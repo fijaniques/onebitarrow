@@ -185,6 +185,11 @@ collect_s={
 2d_physics/layer_9="switch"
 2d_physics/layer_10="trap_shot"
 
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/max_log_files=10
+
 [physics]
 
 common/enable_pause_aware_picking=true

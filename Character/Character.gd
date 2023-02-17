@@ -24,6 +24,9 @@ export var shootAnim: bool = false
 signal the_bullet 
 signal teleport
 
+func _ready():
+	print("Nasceu")
+
 
 func _process(delta):
 	_animation()
@@ -67,11 +70,13 @@ func _movement():
 
 
 func _jump():
+	print("Pulou")
 	$Audio/Jump.play()
 	velocity.y -= jumpForce
 
 
 func _shoot():
+	print("Atirou")
 	$Audio/Shoot.play()
 	shooting = true
 	shootAnim = true
@@ -92,6 +97,7 @@ func _shoot():
 
 
 func _teleport():
+	print("Telesambou")
 	$Audio/Teleport.play()
 	emit_signal("teleport")
 	shooting = false
@@ -103,12 +109,15 @@ func _trap_collision():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("Traps"):
+			print("Colidiu com espinho")
 			_dying()
 
 
 func _dying():
+	print("Começou a morrer")
 	$Audio/Death.play()
 	$Collision.set_deferred("disabled", true)
+	$Killer/Collision.set_deferred("disabled", true)
 	canMove = false
 	canShoot = false
 	dead = true
@@ -117,6 +126,7 @@ func _dying():
 
 func _dead():
 # warning-ignore:return_value_discarded
+	print("Terminou de morrer")
 	MANAGER.deaths += 1
 	MANAGER._save()
 	get_tree().reload_current_scene()
