@@ -6,12 +6,14 @@ var person = ["Allan Defensor",
 "Davi Alcantara", 
 "Fernando Proenca",
 "Italo Cuzziol",
+"Luiz Whiskey",
 "Marlon Marinho",
 "Nina Zambardino",
 "Rafael Martinelli",
 "Renan Castro",
 "Robson Moreira",
 "Thomas Meneghelli",
+"Vitor",
 "Edgar Brito",
 "Eliane 'Mom'",
 "Guilherme Figueiredo",
@@ -23,12 +25,14 @@ var text = ["Got further than anyone else in the game and found a lot of bugs",
 "'This should have double jump'",
 "Coundn't really play 'cause of a broken thumb",
 "Helped a lot with coding",
+"Helped with fine tuning",
 "'This game isn't fun'",
 "Made me keep going and didn't get mad with me spending all my time with this",
 "Found a lot of bugs",
 "Gave me some nice ideas",
 "Made me learn how to make an android version",
 "Spilled his schweppes all over the keyboard just to play the game",
+"Gave me some nice ideas",
 "'I will play... I swear I will'",
 "The real reason I'm alive",
 "'As soon as I get home I'll play'",
@@ -61,7 +65,7 @@ func _on_Timer_timeout():
 func _change_text():
 	$AddInfo.text = text[count]
 	
-	if count > 10:
+	if count > 12:
 		$Testers.set_visible(false)
 		$Special.set_visible(true)
 	

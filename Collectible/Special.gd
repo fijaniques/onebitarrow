@@ -6,6 +6,11 @@ func _ready():
 	$Animation.play("Normal")
 
 
+func _process(delta):
+	if Input.is_action_just_pressed("collect_s"):
+		_picked()
+
+
 func _picked():
 	if canPick:
 		get_tree().current_scene.pickedSpecial = true

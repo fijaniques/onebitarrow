@@ -6,7 +6,7 @@ var gravity: float = 10
 #MOVEMENT
 var speed: float = 100
 var velocity = Vector2.ZERO
-var jumpForce: float = 200
+var jumpForce: float = 210
 var hDir: float
 var canMove: bool = true
 
@@ -23,6 +23,7 @@ var canShoot: bool = true
 export var shootAnim: bool = false
 signal the_bullet 
 signal teleport
+
 
 func _process(delta):
 	_animation()
@@ -51,6 +52,12 @@ func _get_input():
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		_jump()
+	
+	if Input.is_action_just_pressed("forward"):
+		get_tree().current_scene.get_node("Colorizer").get_node("Character").visible = false
+		if get_tree().current_scene.shooting:
+			get_tree().current_scene.get_node("bInstance").queue_free()
+		get_tree().current_scene._change_scene()
 
 
 func _movement():

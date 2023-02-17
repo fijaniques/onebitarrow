@@ -52,60 +52,62 @@ func _get_world():
 
 
 func _change_scene():
+	var nextScene
+	var stageNumber = int(name.replace("Map", ""))
+	
 	if get_tree().current_scene.name == "End":
 		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
-	var a = int(name.replace("Map", ""))
-	MANAGER.stage = a
+	MANAGER.stage = stageNumber
 	
-	var nextScene
-	
-	if !preSix:
-		if pickedSpecial:
-			MANAGER.special += 1
-			MANAGER.specialList[MANAGER.world -1] = 1
+	if !preSix: #não é mundo 5 stage 6
+		_picked_special() #é fase bonus e checa se pegou estrela
+		_picked_collectible() #se é fase normal e pegou moeda
 		
-		_picked_collectible()
-		
-		if !lastStage:
-			if haveCoins or MANAGER.stage < 5:
-				nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", a +1, "/Map0", a +1, ".tscn")
-			else:
-				nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01/Map01.tscn")
+		if !lastStage: #se não é última fase (fase antes dos créditos)
+			if haveCoins or MANAGER.stage < 5: #se tem todas moedas (na fase 5) ou se não é fase 5
+				nextScene = str("res://Maps/World0", MANAGER.world, "/Map0", stageNumber +1, ".tscn")
+			else: #se é fase 5 ou 6 e não tem moedas
+				nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01.tscn")
 				MANAGER.world += 1
 				MANAGER.playing = false
+		else: #se é última fase (fase antes dos créditos)
+			nextScene = "res://Menus/Credits/Credits.tscn"
+			_stop_song()
+	else:
+		_stop_song()
+		_picked_special() #é fase bonus e checa se pegou estrela
+			
+		if haveSpecial:
+			nextScene = "res://Maps/World06/Map01.tscn"
 		else:
 			nextScene = "res://Menus/Credits/Credits.tscn"
-			for audio in MANAGER.get_node("Songs").get_child_count():
-				MANAGER.get_node("Songs").get_child(audio).stop()
-				MANAGER.playing = false
-	else:
-		for audio in MANAGER.get_node("Songs").get_child_count():
-				MANAGER.get_node("Songs").get_child(audio).stop()
-				MANAGER.playing = false
-		_picked_collectible()
+	
+	MANAGER._save()
+	get_tree().change_scene(nextScene)
+
+
+func _picked_special():
+	if pickedSpecial: #é fase bonus e pegou estrela
+		if MANAGER.specialList[MANAGER.world -1] != 1:
+			MANAGER.special += 1
+		MANAGER.specialList[MANAGER.world -1] = 1
 		var sum: int = 0
 		for i in MANAGER.specialList.size():
 			sum += MANAGER.specialList[i]
-			
-		if sum >= 4:
+		if sum >= 5:
 			haveSpecial = true
-		if haveSpecial:
-			nextScene = "res://Maps/World05/Map06/Map06.tscn"
-		else:
-			nextScene = "res://Menus/Credits/Credits.tscn"
-	
-	get_tree().change_scene(nextScene)
 
 
 func _picked_collectible():
 	if pickedCollectible:
+		if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 1:
 			MANAGER.collectible += 1
-			MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
-			var sum: int = 0
-			for c in MANAGER.coins[MANAGER.world -1].size():
-				sum += MANAGER.coins[MANAGER.world -1][c]
-			if sum == 5:
-				haveCoins = true
+		MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] = 1
+		var sum: int = 0
+		for c in MANAGER.coins[MANAGER.world -1].size():
+			sum += MANAGER.coins[MANAGER.world -1][c]
+		if sum == 5:
+			haveCoins = true
 
 
 func _change_color():
@@ -138,11 +140,24 @@ func _start_scene():
 			MANAGER.reached[MANAGER.world -1][MANAGER.stage -1] = 1
 			MANAGER.reached[MANAGER.world][0] = 1
 	
-	if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 0:
-		$Colorizer/Collectible.canPick = false
-		$Colorizer/Collectible.visible = false
+	if MANAGER.stage != 6:
+		if MANAGER.coins[MANAGER.world -1][MANAGER.stage -1] != 0:
+			$Colorizer/Collectible.canPick = false
+			$Colorizer/Collectible.visible = false
+			pickedCollectible = true
+	else:
+		if MANAGER.specialList[MANAGER.world -1] != 0:
+			$Colorizer/Special.canPick = false
+			$Colorizer/Special.visible = false
+			pickedSpecial = true
 	
 	MANAGER._save()
+
+
+func _stop_song():
+	for audio in MANAGER.get_node("Songs").get_child_count():
+		MANAGER.get_node("Songs").get_child(audio).stop()
+		MANAGER.playing = false
 
 
 func _audio_management():

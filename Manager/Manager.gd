@@ -1,6 +1,6 @@
 extends Node2D
 
-var world: int
+var world: int = 1
 var stage: int = 1
 var volume: int = -80
 
