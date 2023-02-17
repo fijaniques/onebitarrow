@@ -273,6 +273,7 @@ flat = true
 
 [node name="Sprite" type="Sprite" parent="Next"]
 position = Vector2( 8, 8 )
+rotation = -1.5708
 texture = ExtResource( 9 )
 
 [node name="Previous" type="Button" parent="."]
@@ -286,6 +287,7 @@ flat = true
 
 [node name="Sprite" type="Sprite" parent="Previous"]
 position = Vector2( 8, 8 )
+rotation = -1.5708
 texture = ExtResource( 9 )
 flip_h = true
 

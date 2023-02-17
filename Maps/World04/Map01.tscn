@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Maps/Base/BaseMap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Rebound/Rebound.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Switch/Switch.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Barrier/Barrier.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Switch/Switch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Barrier/Barrier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Rebound/Rebound.tscn" type="PackedScene" id=4]
 
 [node name="Map01" instance=ExtResource( 1 )]
 
@@ -32,27 +32,27 @@ position = Vector2( 64, 128 )
 [node name="Door" parent="Colorizer" index="8"]
 position = Vector2( 248, 232 )
 
-[node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 4 )]
+[node name="Barrier" parent="Colorizer/Barriers" index="0" instance=ExtResource( 3 )]
 position = Vector2( 56, 184 )
 
-[node name="Barrier2" parent="Colorizer/Barriers" index="1" instance=ExtResource( 4 )]
+[node name="Barrier2" parent="Colorizer/Barriers" index="1" instance=ExtResource( 3 )]
 position = Vector2( 72, 184 )
 
-[node name="Barrier3" parent="Colorizer/Barriers" index="2" instance=ExtResource( 4 )]
+[node name="Barrier3" parent="Colorizer/Barriers" index="2" instance=ExtResource( 3 )]
 position = Vector2( 72, 168 )
 
-[node name="Barrier4" parent="Colorizer/Barriers" index="3" instance=ExtResource( 4 )]
+[node name="Barrier4" parent="Colorizer/Barriers" index="3" instance=ExtResource( 3 )]
 position = Vector2( 56, 168 )
 
-[node name="Barrier5" parent="Colorizer/Barriers" index="4" instance=ExtResource( 4 )]
+[node name="Barrier5" parent="Colorizer/Barriers" index="4" instance=ExtResource( 3 )]
 position = Vector2( 56, 152 )
 
-[node name="Barrier6" parent="Colorizer/Barriers" index="5" instance=ExtResource( 4 )]
+[node name="Barrier6" parent="Colorizer/Barriers" index="5" instance=ExtResource( 3 )]
 position = Vector2( 72, 152 )
 
-[node name="Rebound" parent="Colorizer/Rebound" index="0" instance=ExtResource( 2 )]
+[node name="Rebound" parent="Colorizer/Rebound" index="0" instance=ExtResource( 4 )]
 position = Vector2( 120, 168 )
 rotation = 1.5708
 
-[node name="Switch" parent="Colorizer/Switches" index="0" instance=ExtResource( 3 )]
+[node name="Switch" parent="Colorizer/Switches" index="0" instance=ExtResource( 2 )]
 position = Vector2( 216, 169 )

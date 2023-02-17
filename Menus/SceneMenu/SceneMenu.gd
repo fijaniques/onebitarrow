@@ -1,5 +1,6 @@
 extends Control
 
+var pressed: bool = false
 var selected: int
 var world: int
 
@@ -23,27 +24,37 @@ func _input(event):
 	if Input.is_action_just_pressed("back"):
 		MANAGER.get_node("Menu/Back").play()
 		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
-	if Input.is_action_just_pressed("d") and selected < 6 and world != 6:
+	if Input.is_action_just_pressed("d") and selected < 6 and world != 6 and !pressed:
 		MANAGER.get_node("Menu/Change").play()
+		pressed = true
 		selected += 1
-	elif Input.is_action_just_pressed("a") and selected > 1 and world != 6:
+	elif Input.is_action_just_pressed("a") and selected > 1 and world != 6 and !pressed:
 		MANAGER.get_node("Menu/Change").play()
+		pressed = true
 		selected -= 1
-	elif Input.is_action_just_pressed("s") and world > 1:
+	elif Input.is_action_just_pressed("s") and world > 1 and !pressed:
 		MANAGER.get_node("Menu/ChangeW").play()
+		pressed = true
 		selected = 1
 		world -= 1
 		_get_world()
 		_unlock_check()
 		_special_unlock()
-	elif Input.is_action_just_pressed("up") and world < 6:
+	elif Input.is_action_just_pressed("up") and world < 6 and !pressed:
 		MANAGER.get_node("Menu/ChangeW").play()
+		pressed = true
 		selected = 1
 		world += 1
 		_get_world()
 		_unlock_check()
 		_special_unlock()
 	_get_selection()
+	
+	if Input.is_action_just_released("a") or \
+		Input.is_action_just_released("d") or \
+		Input.is_action_just_released("s") or \
+		Input.is_action_just_released("up"):
+		pressed = false
 
 	if Input.is_action_just_pressed("jump"):
 		_change_scene()

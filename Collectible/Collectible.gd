@@ -6,6 +6,11 @@ func _ready():
 	$Animation.play("Normal")
 
 
+func _process(delta):
+	if Input.is_action_just_pressed("collect"):
+		_picked()
+
+
 func _on_Collectible_body_entered(body):
 	_picked()
 
