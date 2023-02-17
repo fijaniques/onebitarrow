@@ -13,6 +13,7 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("start"):
+		print("Apertou start")
 		selectionPos = 0
 		$Selection.global_position = $Selections.get_child(selectionPos).global_position
 		active = not active
