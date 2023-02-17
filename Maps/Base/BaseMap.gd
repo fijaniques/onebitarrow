@@ -23,6 +23,7 @@ func _ready():
 	$Colorizer/Character.connect("the_bullet", self, "_shoot")
 	$Colorizer/Character.connect("teleport", self, "_teleport")
 	_change_color()
+	print(str("Entrou na fase ", MANAGER.stage, " do mundo ", MANAGER.world))
 
 
 func _shoot(dShot):
@@ -52,6 +53,7 @@ func _get_world():
 
 
 func _change_scene():
+	print(str("Saiu da fase ", MANAGER.stage, " do mundo ", MANAGER.world))
 	var nextScene
 	var stageNumber = int(name.replace("Map", ""))
 	
