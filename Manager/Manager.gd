@@ -34,9 +34,14 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventKey or event is InputEventJoypadButton:
+	if event is InputEventKey:
 		if event.pressed:
-			print(event)
+			print(event.scancode)
+	
+	if event is InputEventJoypadButton:
+		if event.pressed:
+			print(event.button_index)
+	
 	if event is InputEventKey and event.scancode == 16777220 and event.pressed:
 		print("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 	if event is InputEventJoypadButton and event.button_index == 10 and event.pressed:

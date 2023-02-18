@@ -72,6 +72,9 @@ func _change_scene():
 				nextScene = str("res://Maps/World0", MANAGER.world + 1, "/Map01.tscn")
 				MANAGER.world += 1
 				MANAGER.playing = false
+				
+				if MANAGER.world == 6 and !haveSpecial:
+					nextScene = "res://Menus/Credits/Credits.tscn"
 		else: #se é última fase (fase antes dos créditos)
 			nextScene = "res://Menus/Credits/Credits.tscn"
 			_stop_song()
@@ -81,6 +84,7 @@ func _change_scene():
 			
 		if haveSpecial:
 			nextScene = "res://Maps/World06/Map01.tscn"
+			print("I HAVE SPECIAL")
 		else:
 			nextScene = "res://Menus/Credits/Credits.tscn"
 	

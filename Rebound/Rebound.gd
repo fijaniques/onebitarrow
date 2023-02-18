@@ -16,6 +16,7 @@ func _ready():
 
 func _on_Rebound_body_entered(body):
 	$Audio.play()
+	body.global_position = global_position
 	if !body.flipped:
 		body.set_rotation_degrees(rotation_degrees -90)
 	else:

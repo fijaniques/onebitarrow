@@ -18,6 +18,7 @@ var dead: bool = false
 #SHOOT
 var bullet = preload("res://Bullet/Bullet.tscn")
 var shooting: bool = false
+var dying: bool = false
 var dShot = Vector2.ZERO
 var canShoot: bool = true
 export var shootAnim: bool = false
@@ -48,9 +49,9 @@ func _get_input():
 
 
 	if Input.is_action_just_pressed("shoot"):
-		if !shooting and canShoot:
+		if !shooting and canShoot and !dying:
 			_shoot()
-		elif shooting and !canShoot:
+		elif shooting and !canShoot and !dying:
 			_teleport()
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -115,6 +116,7 @@ func _trap_collision():
 
 func _dying():
 	print("Começou a morrer")
+	dying = true
 	$Audio/Death.play()
 	$Collision.set_deferred("disabled", true)
 	$Killer/Collision.set_deferred("disabled", true)
