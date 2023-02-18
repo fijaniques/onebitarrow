@@ -68,5 +68,10 @@ action_mode = 0
 text = "Accept"
 flat = true
 
+[node name="Holder" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Holder" to="." method="_on_Holder_timeout"]
