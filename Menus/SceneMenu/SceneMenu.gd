@@ -24,15 +24,25 @@ func _input(event):
 	if Input.is_action_just_pressed("back"):
 		MANAGER.get_node("Menu/Back").play()
 		get_tree().change_scene("res://Menus/MainMenu/Menu.tscn")
-	if Input.is_action_just_pressed("d") and selected < 6 and world != 6 and !pressed:
+	
+	if Input.is_action_just_pressed("d") and selected < 6 and world != 6 and !pressed: #DIREITA
 		MANAGER.get_node("Menu/Change").play()
 		pressed = true
 		selected += 1
-	elif Input.is_action_just_pressed("a") and selected > 1 and world != 6 and !pressed:
+	elif Input.is_action_just_pressed("a") and selected > 1 and world != 6 and !pressed: #ESQUERDA
 		MANAGER.get_node("Menu/Change").play()
 		pressed = true
 		selected -= 1
-	elif Input.is_action_just_pressed("s") and world > 1 and !pressed:
+	elif Input.is_action_just_pressed("up") and selected > 3 and world != 6 and !pressed:
+		MANAGER.get_node("Menu/Change").play()
+		pressed = true
+		selected -= 3
+	elif Input.is_action_just_pressed("s") and selected < 4 and world != 6 and !pressed:
+		MANAGER.get_node("Menu/Change").play()
+		pressed = true
+		selected += 3
+	
+	elif Input.is_action_just_pressed("lb") and world > 1 and !pressed: #BAIXO
 		MANAGER.get_node("Menu/ChangeW").play()
 		pressed = true
 		selected = 1
@@ -40,7 +50,7 @@ func _input(event):
 		_get_world()
 		_unlock_check()
 		_special_unlock()
-	elif Input.is_action_just_pressed("up") and world < 6 and !pressed:
+	elif Input.is_action_just_pressed("rb") and world < 6 and !pressed: #CIMA
 		MANAGER.get_node("Menu/ChangeW").play()
 		pressed = true
 		selected = 1
@@ -53,7 +63,9 @@ func _input(event):
 	if Input.is_action_just_released("a") or \
 		Input.is_action_just_released("d") or \
 		Input.is_action_just_released("s") or \
-		Input.is_action_just_released("up"):
+		Input.is_action_just_released("up") or \
+		Input.is_action_just_released("rb") or \
+		Input.is_action_just_released("lb"):
 		pressed = false
 
 	if Input.is_action_just_pressed("jump"):
@@ -147,26 +159,6 @@ func _set_counters():
 	$Collectibles/Label.text = str(MANAGER.collectible)
 	$DeathCount/Label.text = str(MANAGER.deaths)
 	$Specials/Label.text = str(MANAGER.special)
-
-
-func _on_Next_pressed():
-	if world < 6:
-		MANAGER.get_node("Menu/ChangeW").play()
-		world += 1
-		selected = 1
-		_get_world()
-		_unlock_check()
-		_special_unlock()
-
-
-func _on_Previous_pressed():
-	if world > 1:
-		MANAGER.get_node("Menu/ChangeW").play()
-		world -= 1
-		selected = 1
-		_get_world()
-		_unlock_check()
-		_special_unlock()
 
 
 func _on_Back_pressed():
