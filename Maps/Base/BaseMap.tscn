@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprite/activatable_tiles.png" type="Texture" id=8]
 [ext_resource path="res://Sprite/point_tiles.png" type="Texture" id=9]
 [ext_resource path="res://Maps/Base/Pause.gd" type="Script" id=10]
-[ext_resource path="res://Sprite/Menus/PauseMenu.png" type="Texture" id=11]
+[ext_resource path="res://Sprite/Menus/pause_menu_continue.png" type="Texture" id=11]
 [ext_resource path="res://Sprite/Menus/pause_menu_selection.png" type="Texture" id=12]
 [ext_resource path="res://Maps/Base/PositionsPause.gd" type="Script" id=13]
 
@@ -871,7 +871,7 @@ z_index = 10
 script = ExtResource( 13 )
 
 [node name="1" type="Position2D" parent="Pause/Selections"]
-position = Vector2( 128, 83 )
+position = Vector2( 128, 80 )
 
 [node name="1" type="Button" parent="Pause/Selections/1"]
 margin_left = -80.0
@@ -883,7 +883,7 @@ action_mode = 0
 flat = true
 
 [node name="2" type="Position2D" parent="Pause/Selections"]
-position = Vector2( 128, 107 )
+position = Vector2( 128, 104 )
 
 [node name="2" type="Button" parent="Pause/Selections/2"]
 margin_left = -79.0
@@ -895,7 +895,7 @@ action_mode = 0
 flat = true
 
 [node name="3" type="Position2D" parent="Pause/Selections"]
-position = Vector2( 128, 132 )
+position = Vector2( 128, 128 )
 
 [node name="3" type="Button" parent="Pause/Selections/3"]
 margin_left = -80.0
@@ -907,9 +907,21 @@ action_mode = 0
 flat = true
 
 [node name="4" type="Position2D" parent="Pause/Selections"]
-position = Vector2( 128, 176 )
+position = Vector2( 128, 152 )
 
 [node name="4" type="Button" parent="Pause/Selections/4"]
+margin_left = -79.0
+margin_top = -8.0
+margin_right = 78.0
+margin_bottom = 12.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+flat = true
+
+[node name="5" type="Position2D" parent="Pause/Selections"]
+position = Vector2( 128, 176 )
+
+[node name="5" type="Button" parent="Pause/Selections/5"]
 margin_left = -79.0
 margin_top = -8.0
 margin_right = 78.0
@@ -926,3 +938,5 @@ flat = true
 [connection signal="pressed" from="Pause/Selections/3/3" to="Pause/Selections" method="_on_3_pressed"]
 [connection signal="mouse_entered" from="Pause/Selections/4/4" to="Pause/Selections" method="_on_4_mouse_entered"]
 [connection signal="pressed" from="Pause/Selections/4/4" to="Pause/Selections" method="_on_4_pressed"]
+[connection signal="mouse_entered" from="Pause/Selections/5/5" to="Pause/Selections" method="_on_5_mouse_entered"]
+[connection signal="pressed" from="Pause/Selections/5/5" to="Pause/Selections" method="_on_5_pressed"]

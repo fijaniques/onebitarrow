@@ -1,6 +1,6 @@
 extends Control
 
-enum {MAIN, SCENESELECTION, RETRY, QUIT}
+enum {CONTINUE, MAIN, SCENESELECTION, RETRY, QUIT}
 
 var selectionPos: int = 0
 var sceneTo
@@ -34,7 +34,7 @@ func _input(event):
 			get_tree().paused = false
 			visible = false
 			
-		if Input.is_action_just_pressed("s") and selectionPos < 3:
+		if Input.is_action_just_pressed("s") and selectionPos < 4:
 			MANAGER.get_node("Menu/Change").play()
 			selectionPos += 1
 			$Selection.global_position = $Selections.get_child(selectionPos).global_position
@@ -51,6 +51,8 @@ func _input(event):
 
 func _set_scene_to():
 	match selectionPos:
+		CONTINUE:
+			sceneTo = null
 		MAIN:
 			sceneTo = "res://Menus/MainMenu/Menu.tscn"
 		SCENESELECTION:
@@ -62,12 +64,18 @@ func _set_scene_to():
 
 
 func _change_scene():
-	if selectionPos != 3:
-		if selectionPos == 2:
+	if selectionPos != 4:
+		if selectionPos == 3:
 			AudioServer.set_bus_effect_enabled(0,0,false)
 			MANAGER.get_node("Menu/Accept").play()
 			get_tree().paused = false
 			get_tree().current_scene.get_node("Colorizer/Character")._dying()
+		elif selectionPos == 0:
+			active = false
+			AudioServer.set_bus_effect_enabled(0,0,false)
+			var pauseState = false
+			get_tree().paused = pauseState
+			visible = pauseState
 		else:
 			AudioServer.set_bus_effect_enabled(0,0,false)
 			for audio in MANAGER.get_node("Songs").get_child_count():

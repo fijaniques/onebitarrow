@@ -11,6 +11,9 @@ __meta__ = {
 [node name="Controls" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 0, -36 )
 
+[node name="Controls1" parent="Controls" index="0"]
+position = Vector2( 0, -23 )
+
 [node name="Cover" parent="Controls" index="3"]
 position = Vector2( 0, 122 )
 
