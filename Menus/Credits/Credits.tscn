@@ -66,7 +66,7 @@ align = 1
 autowrap = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.025
+wait_time = 3.015
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

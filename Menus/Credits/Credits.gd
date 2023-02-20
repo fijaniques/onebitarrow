@@ -1,44 +1,26 @@
 extends Control
 
 onready var names = $Names
-var person = ["Allan Defensor",
-"Danilo Pacheco",
-"Davi Alcantara", 
-"Fernando Proenca",
-"Italo Cuzziol",
-"Luiz Whiskey",
-"Marlon Marinho",
-"Nina Zambardino",
-"Rafael Martinelli",
-"Renan Castro",
-"Robson Moreira",
-"Thomas Meneghelli",
-"Vitor",
-"Edgar Brito",
-"Eliane 'Mom'",
-"Guilherme Figueiredo",
-"Jonas 'Dad'",
-"Kadu Ciccone",
-"Mary Christensen"]
-var text = ["Got further than anyone else in the game and found a lot of bugs",
-"'I can't... I just can't'",
-"'This should have double jump'",
-"Coundn't really play 'cause of a broken thumb",
-"Helped a lot with coding",
-"Helped with fine tuning",
-"'This game isn't fun'",
-"Made me keep going and didn't get mad with me spending all my time with this",
-"Found a lot of bugs",
-"Gave me some nice ideas",
-"Made me learn how to make an android version",
-"Spilled his schweppes all over the keyboard just to play the game",
-"Gave me some nice ideas",
-"'I will play... I swear I will'",
-"The real reason I'm alive",
-"'As soon as I get home I'll play'",
-"The other real reason I'm alive (R.I.P)",
-"'Being honest, I wouldn't play this game on PC'",
-"'We need to beat Linas up'"]
+var person = ["Allan Defensor", "Got further than anyone else in the game and found a lot of bugs",
+"Danilo Pacheco", "'I can't... I just can't'",
+"Davi Alcantara", "'This should have double jump'",
+"Fernando Proenca", "First one to make it to 100%",
+"Italo Cuzziol", "Helped a lot with coding",
+"Luiz Whiskey", "Helped with fine tuning",
+"Marlon Marinho", "'This game isn't fun'",
+"Nina Zambardino", "Made me keep going and didn't get mad with me spending all my time with this",
+"Rafael Martinelli", "Found a lot of bugs",
+"Renan Castro", "Gave me some nice ideas",
+"Robson Moreira", "Made me learn how to make an android version",
+"Thomas Meneghelli", "Spilled his schweppes all over the keyboard just to play the game",
+"Vitor", "Gave me some good ideas",
+"Edgar Brito", "'I will play... I swear I will'",
+"Eliane 'Mom'", "The real reason I'm alive",
+"Guilherme Figueiredo", "'As soon as I get home I'll play'",
+"Jonas 'Dad'", "The other real reason I'm alive (R.I.P)",
+"Kadu Ciccone", "'Being honest, I wouldn't play this game on PC'",
+"Mary Christensen", "'We need to beat Linas up'"]
+
 var count: int = 0
 
 func _ready():
@@ -55,7 +37,7 @@ func _audio_management():
 
 
 func _on_Timer_timeout():
-	count += 1
+	count += 2
 	if !names.text == "Mary Christensen":
 		_change_text()
 	else:
@@ -63,9 +45,9 @@ func _on_Timer_timeout():
 
 
 func _change_text():
-	$AddInfo.text = text[count]
+	$AddInfo.text = person[count +1]
 	
-	if count > 12:
+	if count > 24:
 		$Testers.set_visible(false)
 		$Special.set_visible(true)
 	
