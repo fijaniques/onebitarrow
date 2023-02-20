@@ -43,3 +43,14 @@ func _on_4_mouse_entered():
 	get_tree().current_scene.get_node("Pause").selectionPos = 3
 	get_tree().current_scene.get_node("Pause/Selection").global_position = get_tree().current_scene.get_node("Pause/Selections/4").global_position
 	get_tree().current_scene.get_node("Pause")._set_scene_to()
+
+
+func _on_5_pressed():
+	get_tree().current_scene.get_node("Pause")._change_scene()
+
+
+func _on_5_mouse_entered():
+	MANAGER.get_node("Menu/Change").play()
+	get_tree().current_scene.get_node("Pause").selectionPos = 4
+	get_tree().current_scene.get_node("Pause/Selection").global_position = get_tree().current_scene.get_node("Pause/Selections/4").global_position
+	get_tree().current_scene.get_node("Pause")._set_scene_to()

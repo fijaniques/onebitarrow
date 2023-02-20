@@ -170,3 +170,5 @@ func _audio_management():
 	MANAGER.onStage = true
 	MANAGER.get_node("Menu/Menu").stop()
 	MANAGER.playingMenu = false
+
+
